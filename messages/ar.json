@@ -1,0 +1,146 @@
+{
+  "theme": {
+    "toggleTheme": "تبديل المظهر",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام"
+  },
+  "header": {
+    "home": "الرئيسية",
+    "about": "من نحن",
+    "services": "خدماتنا",
+    "career": "وظائف",
+    "contact": "اتصل بنا",
+    "businessDev": "تطوير الأعمال",
+    "personalDev": "تطوير شخصي",
+    "training": "تدريب",
+    "employment": "توظيف",
+    "hr": "موارد بشرية",
+    "webManagement": "إدارة المواقع",
+    "marketing": "حلول تسويقية",
+    "coaching": "تدريب حياتي",
+    "careerPath": "مسار وظيفي",
+    "internship": "تدريب عملي",
+    "platformName": "منصة إعلانات",
+    "searchPlaceholder": "ابحث عن سيارات، عقارات، أجهزة...",
+    "search": "بحث",
+    "postAd": "نشر إعلان",
+    "realEstate": "عقارات",
+    "cars": "سيارات",
+    "electronics": "إلكترونيات",
+    "jobs": "وظائف",
+    "forSale": "للبيع",
+    "forRent": "للإيجار",
+    "forExchange": "للبدل",
+    "apartments": "شقق",
+    "villas": "فيلات",
+    "carsForSale": "سيارات للبيع",
+    "carsForRent": "سيارات للإيجار",
+    "spareParts": "قطع غيار",
+    "phones": "هواتف",
+    "computers": "أجهزة كمبيوتر",
+    "appliances": "أجهزة منزلية"
+  },
+  "ourServices": {
+    "title": "خدماتنا",
+    "paragraph": "يوفر مسار الأمثل الربط بين المواهب المناسبة والفرص المناسبة."
+  },
+  "ourPartners": {
+    "title": "شركاؤنا "
+  },
+  "ourClients": {
+    "title": "عملاؤنا",
+    "paragraph": "نمكن الأعمال من خلال شراكات موثوقة وحلول مبتكرة."
+  },
+
+  "footer": {
+    "phoneSupport": "الدعم عبر الهاتف",
+    "emailSupport": "الدعم عبر البريد الإلكتروني",
+    "weAreHereToHelp": "نحن دائماً هنا لمساعدتك",
+    "contactThroughSupport": "تواصل معنا من خلال أي من قنوات الدعم التالية:",
+    "information": "معلومات",
+    "aboutUs": "من نحن",
+    "termsConditions": "الشروط والأحكام",
+    "privacyPolicy": "سياسة الخصوصية",
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "contactUs": "اتصل بنا",
+    "blog": "المدونة",
+    "careers": "الوظائف",
+    "myAccount": "حسابي",
+    "accountInfo": "معلومات الحساب",
+    "myAds": "إعلاناتي",
+    "favorites": "المفضلة",
+    "messages": "الرسائل",
+    "notifications": "الإشعارات",
+    "help": "مساعدة",
+    "transactions": "المعاملات",
+    "electronics": "إلكترونيات",
+    "cars": "سيارات",
+    "properties": "عقارات",
+    "jobs": "وظائف",
+    "downloadAppDescription": "حمل تطبيق 4SALE على iOS وأندرويد، بيع واشتري بسهولة في أي مكان.",
+    "copyright": "© 2024 4SALE. جميع الحقوق محفوظة.",
+    "platformName": "4SALE"
+  },
+  "contactUs": {
+    "title": "اتصل بنا",
+    "address": "العنوان",
+    "phone": "الهاتف",
+    "email": "الايميل"
+  },
+  "forms": {
+    "contactForm": {
+      "fields": {
+        "firstName": {
+          "label": "الاسم الأول",
+          "placeholder": "الاسم الأول",
+          "error": "يجب أن يحتوي الاسم الأول على أحرف فقط"
+        },
+        "lastName": {
+          "label": "الاسم الأخير",
+          "placeholder": "الاسم الأخير",
+          "error": "يجب أن يحتوي الاسم الأخير على أحرف فقط"
+        },
+        "email": {
+          "label": "البريد الإلكتروني",
+          "placeholder": "البريد الإلكتروني",
+          "error": "صيغة البريد الإلكتروني غير صالحة"
+        },
+        "phone": {
+          "label": "رقم الهاتف",
+          "placeholder": "أدخل رقم الهاتف",
+          "error": "رقم الهاتف غير صالح"
+        },
+        "subject": {
+          "label": "الموضوع",
+          "placeholder": "الموضوع",
+          "error": "لا يمكن ترك الموضوع فارغًا"
+        },
+        "message": {
+          "label": "الرسالة",
+          "placeholder": "اكتب رسالتك هنا",
+          "error": "لا يمكن ترك الرسالة فارغة"
+        }
+      },
+      "submit": "إرسال",
+      "validation": {
+        "required": "هذا الحقل مطلوب",
+        "invalidFormat": "صيغة غير صالحة"
+      }
+    },
+    "subscribeForm": {
+      "description": "ابق على اطلاع بآخر أخبارنا وعروضنا",
+      "emailPlaceholder": "بريدك@الإلكتروني",
+      "subscribe": "اشترك",
+      "submitting": "جاري الاشتراك...",
+      "success": {
+        "title": "تم الاشتراك بنجاح!",
+        "description": "شكراً لك على اشتراكك في نشرتنا البريدية."
+      },
+      "error": {
+        "title": "فشل الاشتراك",
+        "description": "الرجاء المحاولة مرة أخرى لاحقاً."
+      }
+    }
+  }
+}

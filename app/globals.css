@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+@layer base {
+  :root {
+    --primary: 180 97% 27%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 180 97% 23%;
+    --primary-active: 180 97% 20%;
+
+    --primary-color2: #000000;
+    --primary-color3: #ffffff;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 180 97% 27%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    .ant-input::placeholder {
+      color: #6b7280 !important;
+    }
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 0 0% 95%;
+    --card: 24 9.8% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 180 97% 27%;
+    --primary-foreground: 180 80% 95%;
+    --ring: 180 97% 27%;
+
+    --border: 240 3.7% 15.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 180 97% 27%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 180 97% 27%;
+
+    .ant-input::placeholder {
+      color: #9ca3af !important;
+    }
+  }
+}
