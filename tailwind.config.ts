@@ -21,33 +21,34 @@ const config: Config = {
         foreground: "hsl(var(--foreground))",
         border: "hsl(var(--border))",
         primary: {
-          "100": "#e6f4f4",
-          DEFAULT: "#037f85",
-          color1: "#037f85",
-          hover: "#026e73",
-          color2: "#e0e0e0",
-          color3: "#ffffff",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+          hover: "hsl(var(--primary-hover))",
+          active: "hsl(var(--primary-active))",
+          color1: "#17314d",
+          color2: "hsl(var(--primary-color2))",
+          color3: "hsl(var(--primary-color3))",
         },
         darkMod: {
-          "100": "#2a2a2aff",
-          "200": "#1f2020",
-          "300": "#1f1f1f",
-          "400": "#393939",
-          "500": "#161818",
-          "600": "#303030",
-          "700": "#131314",
+          100: "#2a2a2aff",
+          200: "#1f2020",
+          300: "#1f1f1f",
+          400: "#393939",
+          500: "#161818",
+          600: "#303030",
+          700: "#131314",
           DEFAULT: "#343535",
         },
         tertiary: "#151030",
         secondary: "#FBE843",
         black: {
-          "100": "#333333",
-          "200": "#141413",
-          "300": "#7D8087",
+          100: "#333333",
+          200: "#141413",
+          300: "#7D8087",
           DEFAULT: "#000000",
         },
         white: {
-          "100": "#F7F7F7",
+          100: "#F7F7F7",
           DEFAULT: "#FFFFFF",
         },
         sidebar: {
@@ -61,19 +62,15 @@ const config: Config = {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
-      // fontFamily: {
-      //   zain: ["var(--font-zain)"],
-      //   poppins: ["Poppins", "sans-serif"],
-      // },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        "100": "2px 2px 0px 0px rgb(0, 0, 0)",
-        "200": "2px 2px 0px 2px rgb(0, 0, 0)",
-        "300": "2px 2px 0px 2px rgb(238, 43, 105)",
+        100: "2px 2px 0px 0px rgb(0, 0, 0)",
+        200: "2px 2px 0px 2px rgb(0, 0, 0)",
+        300: "2px 2px 0px 2px rgb(238, 43, 105)",
       },
       animation: {
         "bounce-x": "bouncex 1s infinite",
@@ -99,7 +96,23 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+    addVariablesForColors,
+  ],
 };
+
+// This plugin adds each Tailwind color as a global CSS variable
+function addVariablesForColors({ addBase, theme }: any) {
+  const allColors = flattenColorPalette(theme("colors"));
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}
 
 export default config;

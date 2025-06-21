@@ -6,57 +6,102 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 @layer base {
   :root {
-    --primary: 180 97% 27%;
-    --primary-foreground: 0 0% 100%;
-    --primary-hover: 180 97% 23%;
-    --primary-active: 180 97% 20%;
-
-    --primary-color2: #000000;
-    --primary-color3: #ffffff;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 180 97% 27%;
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-
+    /* Light Theme Colors */
+    --background: 0 0% 100%; /* white */
+    --foreground: 0 0% 3.9%; /* almost black */
+    
+    /* Primary Colors */
+    --primary: 180 97% 27%; /* teal */
+    --primary-foreground: 0 0% 100%; /* white */
+    --primary-hover: 180 97% 23%; /* darker teal */
+    --primary-active: 180 97% 20%; /* even darker teal */
+    
+    /* Additional Colors */
+    --primary-color2: 0 0% 0%; /* black */
+    --primary-color3: 0 0% 100%; /* white */
+    
+    /* Sidebar Colors - Light Theme */
+    --sidebar-background: 0 0% 98%; /* very light gray */
+    --sidebar-foreground: 240 5.3% 26.1%; /* dark gray */
+    --sidebar-primary: 240 5.9% 10%; /* very dark gray */
+    --sidebar-primary-foreground: 0 0% 98%; /* very light gray */
+    --sidebar-accent: 240 4.8% 95.9%; /* light gray */
+    --sidebar-accent-foreground: 240 5.9% 10%; /* very dark gray */
+    --sidebar-border: 220 13% 91%; /* light gray */
+    --sidebar-ring: 180 97% 27%; /* teal (same as primary) */
+    
+    /* Input Placeholder */
     .ant-input::placeholder {
-      color: #6b7280 !important;
+      color: hsl(220, 9%, 46%) !important; /* gray-500 */
     }
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 0 0% 95%;
-    --card: 24 9.8% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 95%;
-
-    --primary: 180 97% 27%;
-    --primary-foreground: 180 80% 95%;
-    --ring: 180 97% 27%;
-
-    --border: 240 3.7% 15.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 180 97% 27%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 180 97% 27%;
-
+    /* Dark Theme Colors */
+    --background: 20 14.3% 4.1%; /* very dark brown */
+    --foreground: 0 0% 95%; /* very light gray */
+    
+    /* Card Colors */
+    --card: 24 9.8% 10%; /* dark brown */
+    --card-foreground: 0 0% 95%; /* very light gray */
+    
+    /* Popover Colors */
+    --popover: 0 0% 9%; /* very dark gray */
+    --popover-foreground: 0 0% 95%; /* very light gray */
+    
+    /* Primary Colors - Dark Theme */
+    --primary: 180 97% 27%; /* teal (same as light theme) */
+    --primary-foreground: 180 80% 95%; /* very light teal */
+    --ring: 180 97% 27%; /* teal */
+    
+    /* Border Color */
+    --border: 240 3.7% 15.9%; /* dark gray */
+    
+    /* Sidebar Colors - Dark Theme */
+    --sidebar-background: 240 5.9% 10%; /* very dark gray */
+    --sidebar-foreground: 240 4.8% 95.9%; /* very light gray */
+    --sidebar-primary: 180 97% 27%; /* teal */
+    --sidebar-primary-foreground: 0 0% 100%; /* white */
+    --sidebar-accent: 240 3.7% 15.9%; /* dark gray */
+    --sidebar-accent-foreground: 240 4.8% 95.9%; /* very light gray */
+    --sidebar-border: 240 3.7% 15.9%; /* dark gray */
+    --sidebar-ring: 180 97% 27%; /* teal */
+    
+    /* Input Placeholder - Dark Theme */
     .ant-input::placeholder {
-      color: #9ca3af !important;
+      color: hsl(215, 14%, 64%) !important; /* gray-400 */
     }
   }
+
+  /* Base HTML Elements Styling */
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Work Sans', sans-serif;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--sidebar-accent));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-hover));
+  }
 }
+

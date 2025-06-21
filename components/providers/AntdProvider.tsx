@@ -17,7 +17,7 @@ export function AntdProvider({ children }: { children: React.ReactNode }) {
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: "#037f85",
+            colorPrimary: "#17314d",
           },
         }}
       >
@@ -30,7 +30,7 @@ export function AntdProvider({ children }: { children: React.ReactNode }) {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "#037f85",
+          colorPrimary: "#17314d",
         },
         algorithm:
           resolvedTheme === "dark"
