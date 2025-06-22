@@ -1,21 +1,17 @@
-import star from "@/public/icons/star.svg";
-import skills from "@/public/icons/skills.svg";
-import questions from "@/public/icons/questions.svg";
-import briefcase from "@/public/icons/briefcase.svg";
-import team from "@/public/icons/team.svg";
-import training from "@/public/icons/training.svg";
-import clients from "@/public/icons/client.svg";
-import email from "@/public/icons/email.svg";
-import job from "@/public/icons/job.svg";
+import digital from "@/public/icons/digital-marketing.svg";
+import figma from "@/public/icons/figma.svg";
+import printer from "@/public/icons/printer.svg";
+import web_application from "@/public/icons/web-application.svg";
+import mobile_application from "@/public/icons/mobile-application.svg";
+import system from "@/public/icons/system.svg";
+import clients from "@/public/icons/clients.svg";
 
 export const icons = {
-  star,
-  skills,
-  questions,
-  briefcase,
-  team,
-  training,
+  digital,
+  figma,
+  printer,
+  web_application,
+  mobile_application,
+  system,
   clients,
-  email,
-  job,
 };

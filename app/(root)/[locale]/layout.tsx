@@ -10,10 +10,10 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "FuttureX",
+  title: "FUTURE X",
   description: "Software Company",
   icons: {
-    icon: "/images/small_logo.jpg",
+    icon: "/images/logo.png",
   },
 };
 
@@ -42,7 +42,7 @@ export default async function LocaleLayout({
             <ThemeProvider>
               <AntdProvider>
                 <Header />
-                {children}
+                <div className="mt-20">{children}</div>
                 <Footer />
               </AntdProvider>
             </ThemeProvider>

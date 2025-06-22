@@ -67,12 +67,6 @@ export interface Projects {
 }
 export interface SliderProps {
   id: number;
-  title: string;
-  description: string;
-  first_btn_text: string;
-  first_btn_url: string;
-  second_btn_text: string;
-  second_btn_url: string;
   backgroundImage?: string;
 }
 export interface CategoryProps {
@@ -131,7 +125,6 @@ export interface Teams {
 export type ProjectsArray = ProjectProps[];
 export type ServicesArray = ServiceProps[];
 export type TestimoniArray = TestimoniProps[];
-export type SliderArray = SliderProps[];
 export type CategoryArray = CategoryProps[];
 export type SectionArray = SectionProps[];
 export type PersonalProjectsArray = PersonalProjectsProps[];

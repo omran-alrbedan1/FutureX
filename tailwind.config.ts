@@ -25,8 +25,8 @@ const config: Config = {
           foreground: "hsl(var(--primary-foreground))",
           hover: "hsl(var(--primary-hover))",
           active: "hsl(var(--primary-active))",
-          color1: "#17314d",
-          color2: "hsl(var(--primary-color2))",
+          color1: "#2e6399",
+          color2: "#e35b00",
           color3: "hsl(var(--primary-color3))",
         },
         darkMod: {

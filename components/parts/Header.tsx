@@ -1,22 +1,83 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Drawer, Menu } from "antd";
-import type { MenuProps } from "antd";
+
 import { Menu as MenuIcon, PhoneIcon, X, User } from "lucide-react";
 import { SlInfo } from "react-icons/sl";
 import { MdOutlineMiscellaneousServices } from "react-icons/md";
 import { GrHomeRounded } from "react-icons/gr";
 import { IoBriefcaseOutline } from "react-icons/io5";
 import { ThemeToggler } from "@/components/ui/ThemeToggler";
-import { images } from "@/constants/images";
-// import LanguageSwitcher from "../elements/Switcher";
 import { useTranslations } from "next-intl";
+
+import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { motion, AnimatePresence } from "framer-motion";
+
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+
+const services = [
+  {
+    id: 1,
+    title: "Mobile App Development",
+    description:
+      "We specialize in Flutter to develop commercial, reliable, and efficient mobile applications for iOS and Android.",
+    image: icons.mobile_application,
+    link: "/services/mobile-app",
+  },
+  {
+    id: 2,
+    title: "Web Application Development",
+    description:
+      "Custom platforms to manage your business from anywhere using Laravel, Node.js, React, and ASP.NET.",
+    image: icons.web_application,
+    link: "/services/web-app",
+  },
+  {
+    id: 3,
+    title: "Printing Services",
+    description:
+      "High-quality printing services including business cards, brochures, banners, and promotional materials.",
+    image: icons.printer,
+    link: "/services/printing",
+  },
+  {
+    id: 4,
+    title: "UI/UX Design",
+    description:
+      "Creating designs that make users comfortable and confident in your product.",
+    image: icons.figma,
+    link: "/services/ui-ux",
+  },
+  {
+    id: 5,
+    title: "Custom Software Systems",
+    description:
+      "ERP, CRM, hospital/clinic systems, school systems, and POS solutions.",
+    image: icons.system,
+    link: "/services/software",
+  },
+  {
+    id: 6,
+    title: "Digital Marketing",
+    description:
+      "Social media management, targeted ads, and professional marketing campaigns.",
+    image: icons.digital,
+    link: "/services/marketing",
+  },
+];
 
 const Header = () => {
   const t = useTranslations("header");
@@ -27,6 +88,11 @@ const Header = () => {
   const router = useRouter();
 
   const isArabic = path.includes("/ar");
+
+  // Helper function to check if a link is active
+  const isActiveLink = (linkPath: string) => {
+    return path === linkPath || path.startsWith(`en/${linkPath}/`);
+  };
 
   useEffect(() => {
     setIsClient(true);
@@ -65,8 +131,8 @@ const Header = () => {
         >
           <Image
             src={images.logo}
-            width={windowWidth > 1024 ? 80 : 50}
-            height={windowWidth > 1024 ? 30 : 30}
+            width={windowWidth > 1024 ? 150 : 50}
+            height={windowWidth > 1024 ? 160 : 30}
             alt="logo"
             priority
           />
@@ -81,7 +147,7 @@ const Header = () => {
                 <Link
                   href="/home"
                   className={`text-[16px] font-medium px-3 py-2 rounded-md transition-colors ${
-                    path === "/home"
+                    isActiveLink("/en/home")
                       ? "text-primary-color1"
                       : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
                   }`}
@@ -96,8 +162,8 @@ const Header = () => {
                 <Link
                   href="/about-us"
                   className={`text-[16px] font-medium px-3 py-2 rounded-md transition-colors ${
-                    path === "/about-us"
-                      ? "text-primary-color1"
+                    isActiveLink("/en/about-us")
+                      ? "text-primary-color1 fontsm"
                       : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
                   }`}
                   style={{ direction: isArabic ? "rtl" : "ltr" }}
@@ -106,42 +172,134 @@ const Header = () => {
                 </Link>
               </li>
 
-              {/* Services */}
-              <li>
-                <Link
-                  href="/services"
-                  className={`text-[16px] font-medium px-3 py-2 rounded-md transition-colors ${
-                    path === "/about-us"
-                      ? "text-primary-color1"
-                      : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
-                  }`}
-                  style={{ direction: isArabic ? "rtl" : "ltr" }}
-                >
-                  our Services
-                </Link>
-              </li>
+              {/* Services Dropdown */}
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger
+                      className={`text-[16px] font-medium rounded-md transition-colors ${
+                        isActiveLink("/en/services")
+                          ? "text-primary-color1"
+                          : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
+                      }`}
+                    >
+                      Our Services
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <motion.ul
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="grid w-[400px] gap-2 p-6 md:w-[600px] md:grid-cols-2 lg:w-[800px] shadow-xl bg-white dark:bg-darkMod-200 rounded-xl border border-gray-100 dark:border-gray-700"
+                      >
+                        {services.map((service, index) => (
+                          <motion.li
+                            key={service.id}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                              duration: 0.3,
+                              ease: "easeOut",
+                              delay: index * 0.1,
+                            }}
+                            whileHover={{ scale: 1.02 }}
+                            className="relative overflow-hidden rounded-lg group"
+                          >
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={service.link}
+                                className={`block select-none space-y-1 p-4 no-underline outline-none transition-all duration-300 hover:bg-gray-50 dark:hover:bg-darkMod-300 h-full ${
+                                  isActiveLink(service.link)
+                                    ? "bg-gray-50 dark:bg-darkMod-300"
+                                    : ""
+                                }`}
+                              >
+                                <div className="flex items-start gap-4">
+                                  <motion.div className="shrink-0 p-3 group-hover:rotate-3 rounded-xl bg-primary-color1/10 group-hover:bg-primary-color1/20 transition-all duration-300">
+                                    <Image
+                                      src={service.image}
+                                      width={42}
+                                      height={42}
+                                      alt={service.title}
+                                      className={`${
+                                        isActiveLink(service.link)
+                                          ? "text-primary-color1"
+                                          : "text-gray-600 dark:text-gray-400"
+                                      }`}
+                                      priority={false}
+                                      loading="lazy"
+                                    />
+                                  </motion.div>
 
-              {/* Career */}
+                                  <div className="flex-1 space-y-2">
+                                    <h3
+                                      className={`text-sm font-semibold ${
+                                        isActiveLink(service.link)
+                                          ? "text-primary-color1"
+                                          : "text-gray-900 dark:text-white group-hover:text-primary-color1"
+                                      } transition-colors duration-300`}
+                                    >
+                                      {service.title}
+                                    </h3>
+                                    <motion.div
+                                      initial={{ height: 40 }}
+                                      className="overflow-hidden"
+                                    >
+                                      <p
+                                        className={`text-xs leading-relaxed leading max-w-32 ${
+                                          isActiveLink(service.link)
+                                            ? "text-gray-700 dark:text-gray-300"
+                                            : "text-gray-600 dark:text-gray-400"
+                                        } transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300`}
+                                      >
+                                        {service.description}
+                                      </p>
+                                    </motion.div>
+                                  </div>
+                                </div>
+
+                                {/* Active link indicator */}
+                                {isActiveLink(service.link) && (
+                                  <div className="absolute top-0 right-0 w-1 h-full bg-primary-color1 rounded-l-full" />
+                                )}
+
+                                {/* Subtle hover effect */}
+                                <motion.div
+                                  className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-color1/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                  initial={{ scale: 0.9 }}
+                                />
+                              </Link>
+                            </NavigationMenuLink>
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+
+              {/* Our Projects */}
               <li>
                 <Link
-                  href="/career"
+                  href="/projects"
                   className={`text-[16px] font-medium px-3 py-2 rounded-md transition-colors ${
-                    path === "/career"
+                    isActiveLink("/en/projects")
                       ? "text-primary-color1"
                       : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
                   }`}
                   style={{ direction: isArabic ? "rtl" : "ltr" }}
                 >
-                  {t("career")}
+                  {t("ourProjects")}
                 </Link>
               </li>
 
               {/* Contact */}
               <li>
                 <Link
-                  href="/contact-us"
+                  href="/en/contact-us"
                   className={`text-[16px] font-medium px-3 py-2 rounded-md transition-colors ${
-                    path === "/contact-us"
+                    isActiveLink("/contact-us")
                       ? "text-primary-color1"
                       : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
                   }`}
@@ -155,14 +313,10 @@ const Header = () => {
 
           <div className="flex items-center gap-4 mb-2 ml-4">
             <ThemeToggler />
-            {/* <LanguageSwitcher /> */}
           </div>
-
-          <div className="flex items-center mb-2"></div>
         </div>
 
         <div className="flex lg:hidden items-center gap-4">
-          {/* Mobile Menu Button */}
           <button
             className="text-primary-color1 focus:outline-none"
             onClick={showDrawer}
@@ -173,7 +327,7 @@ const Header = () => {
       </div>
 
       {/* Mobile Drawer */}
-      <Drawer
+      {/* <Drawer
         title={
           <div className="flex justify-between items-center">
             <Link href="/home" className="flex items-center gap-1">
@@ -207,7 +361,6 @@ const Header = () => {
         footer={
           <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700">
             <ThemeToggler />
-            {/* <LanguageSwitcher /> */}
           </div>
         }
       >
@@ -221,7 +374,11 @@ const Header = () => {
                 label: (
                   <Link
                     href="/home"
-                    className="text-[16px] font-medium text-gray-800 dark:text-gray-200"
+                    className={`text-[16px] font-medium ${
+                      isActiveLink("/home")
+                        ? "text-primary-color1"
+                        : "text-gray-800 dark:text-gray-200"
+                    }`}
                     style={{ direction: isArabic ? "rtl" : "ltr" }}
                   >
                     {t("home")}
@@ -234,7 +391,11 @@ const Header = () => {
                 label: (
                   <Link
                     href="/about-us"
-                    className="text-[16px] font-medium text-gray-800 dark:text-gray-200"
+                    className={`text-[16px] font-medium ${
+                      isActiveLink("/about-us")
+                        ? "text-primary-color1"
+                        : "text-gray-800 dark:text-gray-200"
+                    }`}
                     style={{ direction: isArabic ? "rtl" : "ltr" }}
                   >
                     {t("about")}
@@ -246,22 +407,29 @@ const Header = () => {
                 icon: <MdOutlineMiscellaneousServices className="w-5 h-5" />,
                 label: (
                   <Link
-                    href="/about-us"
-                    className="text-[16px] font-medium text-gray-800 dark:text-gray-200"
+                    href="/services"
+                    className={`text-[16px] font-medium ${
+                      isActiveLink("/services")
+                        ? "text-primary-color1"
+                        : "text-gray-800 dark:text-gray-200"
+                    }`}
                     style={{ direction: isArabic ? "rtl" : "ltr" }}
                   >
                     Our Services
                   </Link>
                 ),
               },
-
               {
                 key: "/career",
                 icon: <IoBriefcaseOutline className="w-5 h-5" />,
                 label: (
                   <Link
                     href="/career"
-                    className="text-[16px] font-medium text-gray-800 dark:text-gray-200"
+                    className={`text-[16px] font-medium ${
+                      isActiveLink("/career")
+                        ? "text-primary-color1"
+                        : "text-gray-800 dark:text-gray-200"
+                    }`}
                     style={{ direction: isArabic ? "rtl" : "ltr" }}
                   >
                     {t("career")}
@@ -274,7 +442,11 @@ const Header = () => {
                 label: (
                   <Link
                     href="/contact-us"
-                    className="text-[16px] font-medium text-gray-800 dark:text-gray-200"
+                    className={`text-[16px] font-medium ${
+                      isActiveLink("/contact-us")
+                        ? "text-primary-color1"
+                        : "text-gray-800 dark:text-gray-200"
+                    }`}
                     style={{ direction: isArabic ? "rtl" : "ltr" }}
                   >
                     {t("contact")}
@@ -287,7 +459,11 @@ const Header = () => {
                 label: (
                   <Link
                     href="/profile"
-                    className="text-[16px] font-medium text-gray-800 dark:text-gray-200"
+                    className={`text-[16px] font-medium ${
+                      isActiveLink("/profile")
+                        ? "text-primary-color1"
+                        : "text-gray-800 dark:text-gray-200"
+                    }`}
                     style={{ direction: isArabic ? "rtl" : "ltr" }}
                   >
                     Profile
@@ -296,14 +472,13 @@ const Header = () => {
               },
             ]}
             selectedKeys={[path]}
-            defaultOpenKeys={path.startsWith("/services") ? ["/services"] : []}
             className={`border-r-0 [&_.ant-menu-item]:!h-12 [&_.ant-menu-submenu-title]:!h-12 ${
               isArabic ? "rtl-menu" : ""
             }`}
             style={{ direction: isArabic ? "rtl" : "ltr" }}
           />
         </div>
-      </Drawer>
+      </Drawer> */}
     </header>
   );
 };

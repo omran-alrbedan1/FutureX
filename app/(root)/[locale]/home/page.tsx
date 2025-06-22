@@ -1,12 +1,18 @@
 import { Suspense } from "react";
 
 import Loader from "@/components/Loader";
-import { Partners, Services } from "@/components/home";
+import { Partners, Section, Services, Hero, Works } from "@/components/home";
+import Clients from "@/components/home/Clients";
 
 const Page = async () => {
   return (
     <Suspense fallback={<Loader />}>
-      <div className="relative duration-500"></div>
+      <div className="relative duration-500">
+        <Hero />
+        <Services />
+        <Works />
+        <Clients />
+      </div>
     </Suspense>
   );
 };
