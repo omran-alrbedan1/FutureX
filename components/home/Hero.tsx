@@ -4,35 +4,11 @@ import { cn } from "@/lib/utils";
 import Slider from "./Slider";
 
 const Hero = () => {
-  const sliders = [
-    {
-      backgroundImage: "/images/hero1.jpg",
-    },
-    {
-      backgroundImage: "/images/hero2.jpg",
-    },
-    {
-      backgroundImage: "/images/hero3.jpg",
-    },
-
-    {
-      backgroundImage: "/images/hero4.jpg",
-    },
-    {
-      backgroundImage: "/images/hero5.jpg",
-    },
-    {
-      backgroundImage: "/images/hero6.jpg",
-    },
-  ];
-
   return (
-    <div className="relative mx-auto my-10 flex w-full flex-col items-center justify-center min-h-[90vh] mb-24">
-      <Slider sliders={sliders} />
-
+    <div className="relative mx-auto my-10 flex w-full flex-col items-center justify-center  mb-24">
       {/* Content */}
       <div className="relative z-10 px-4 py-10 md:py-20 w-full">
-        <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-white md:text-4xl lg:text-7xl dark:text-slate-300 [text-shadow:_0_1px_4px_rgb(0_0_0_/_50%)]">
+        <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-black md:text-4xl lg:text-7xl dark:text-slate-300 ">
           {[
             { text: "Where" },
             { text: "Digital", className: "text-primary-color1" },
@@ -69,7 +45,7 @@ const Hero = () => {
             duration: 0.3,
             delay: 0.8,
           }}
-          className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-gray-200 dark:text-neutral-400 [text-shadow:_0_1px_3px_rgb(0_0_0_/_60%)]"
+          className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-gray-500 dark:text-neutral-400 "
         >
           Building transformative digital experiences that propel businesses
           forward and turn visionary ideas into tangible solutions.
@@ -94,6 +70,32 @@ const Hero = () => {
           <button className="w-60 transform rounded-lg border border-primary-color1 bg-white px-6 py-2 font-medium text-primary-color1 transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900">
             Contact Support
           </button>
+        </motion.div>
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 10,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.3,
+            delay: 1.2,
+          }}
+          className="relative z-10 mt-20 rounded-3xl border max-w-7xl mx-auto border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
+        >
+          <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
+            <img
+              src="/images/future hero.png"
+              alt="Landing page preview"
+              className=" h-auto w-full object-cover"
+              height={1000}
+              width={1000}
+            />
+          </div>
         </motion.div>
       </div>
     </div>
