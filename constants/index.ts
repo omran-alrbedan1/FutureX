@@ -162,4 +162,85 @@ export const projects = [
     year: 2023,
     tags: ["CRM", "Business Tools"],
   },
+  {
+    id: 6,
+    title: "FutureX CRM",
+    description:
+      "Customer relationship management system with task and support ticket features",
+    category: "Web Application",
+    features: [
+      "Client management",
+      "Task tracking",
+      "Multi-channel support",
+      "Performance analytics",
+    ],
+    image: "/images/hero2.jpg",
+    link: "/projects/futurex-crm",
+    client: "Various Businesses",
+    year: 2023,
+    tags: ["CRM", "Business Tools"],
+  },
+  {
+    id: 6,
+    title: "FutureX CRM",
+    description:
+      "Customer relationship management system with task and support ticket features",
+    category: "Web Application",
+    features: [
+      "Client management",
+      "Task tracking",
+      "Multi-channel support",
+      "Performance analytics",
+    ],
+    image: "/images/hero2.jpg",
+    link: "/projects/futurex-crm",
+    client: "Various Businesses",
+    year: 2023,
+    tags: ["CRM", "Business Tools"],
+  },
+  {
+    id: 6,
+    title: "FutureX CRM",
+    description:
+      "Customer relationship management system with task and support ticket features",
+    category: "Web Application",
+    features: [
+      "Client management",
+      "Task tracking",
+      "Multi-channel support",
+      "Performance analytics",
+    ],
+    image: "/images/hero2.jpg",
+    link: "/projects/futurex-crm",
+    client: "Various Businesses",
+    year: 2023,
+    tags: ["CRM", "Business Tools"],
+  },
+];
+
+export const sliders = [
+  {
+    image: "/images/hero1.jpg",
+    url: "/",
+  },
+  {
+    image: "/images/hero2.jpg",
+    url: "/",
+  },
+  {
+    image: "/images/hero3.jpg",
+    url: "/",
+  },
+  {
+    image: "/images/hero4.jpg",
+    url: "/",
+  },
+  {
+    image: "/images/hero5.jpg",
+    url: "/",
+  },
+  {
+    image: "/images/hero6.jpg",
+    url: "/",
+  },
 ];

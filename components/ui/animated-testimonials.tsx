@@ -9,10 +9,9 @@ type Project = {
   id: number;
   title: string;
   description: string;
-  detailedDescription: string[]; // Added detailed description
+  detailedDescription: string[];
   image: string;
   tags: string[];
-  link: string;
 };
 
 export const AnimatedProjects = ({
@@ -161,7 +160,7 @@ export const AnimatedProjects = ({
             </ul>
 
             <Link
-              href={projects[active].link}
+              href={`/projects/${projects[active].id}`}
               className="inline-flex items-center text-primary-color1 hover:text-primary-color2 transition-colors duration-300 font-medium"
             >
               View Project <FaExternalLinkAlt className="ml-2" />

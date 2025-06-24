@@ -85,7 +85,6 @@ const ServiceDetails = () => {
       ],
       image: "/images/hero1.jpg",
       tags: ["Flutter", "Firebase", "Payment Gateway"],
-      link: "https://main.hivetech.space",
     },
     {
       id: 2,
@@ -100,7 +99,6 @@ const ServiceDetails = () => {
       ],
       image: "/images/hero2.jpg",
       tags: ["Dart", "BLoC", "Health API"],
-      link: "https://main.hivetech.space",
     },
     {
       id: 3,
@@ -115,7 +113,6 @@ const ServiceDetails = () => {
       ],
       image: "/images/hero3.jpg",
       tags: ["GetX", "Charts", "REST API"],
-      link: "https://main.hivetech.space",
     },
   ];
 
@@ -133,18 +130,6 @@ const ServiceDetails = () => {
   const listItem = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
-  };
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
   };
 
   return (

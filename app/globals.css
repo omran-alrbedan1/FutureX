@@ -85,6 +85,12 @@
     font-family: 'Work Sans', sans-serif;
   }
 
+  /* Hide scrollbar for WebKit browsers */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+
   /* Scrollbar Styling */
   ::-webkit-scrollbar {
     width: 8px;
@@ -104,4 +110,5 @@
     background: hsl(var(--primary-hover));
   }
 }
+
 

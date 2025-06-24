@@ -1,12 +1,12 @@
 "use client";
-
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Title from "../parts/Title";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronsRight } from "lucide-react";
 import Image from "next/image";
 import { projects } from "@/constants";
 import { Button } from "../ui/moving-border";
+import { useRouter } from "next/navigation";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -19,36 +19,11 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
-  hidden: { y: 50, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-  hover: {
-    y: -5,
-    transition: {
-      duration: 0.3,
-    },
-  },
-};
-
-const imageVariants = {
-  hover: {
-    scale: 1.05,
-    transition: {
-      duration: 0.4,
-      ease: "easeOut",
-    },
-  },
-};
-
 export default function Works() {
   const t = useTranslations("ourWorks");
+  const router = useRouter();
+
+  const latestProjects = projects.slice(0, 6);
 
   return (
     <motion.section
@@ -66,7 +41,7 @@ export default function Works() {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-7xl mt-12">
-        {projects.map((project, index) => (
+        {latestProjects.map((project, index) => (
           <motion.div
             key={project.id}
             initial={{ opacity: 0, y: 20 }}
@@ -77,6 +52,7 @@ export default function Works() {
             <Button
               borderRadius="1rem"
               duration={5000 + Math.random() * 2000}
+              onClick={() => router.push(`/projects/${project.id}`)}
               className="dark:bg-darkMod-400 text-black border border-gray-200 dark:border-none p-0 overflow-hidden"
             >
               <div className="relative h-full bg-white rounded-xl overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-xl dark:bg-gray-800/70 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
@@ -140,6 +116,31 @@ export default function Works() {
           </motion.div>
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+        viewport={{ once: true }}
+        onClick={() => router.push("/projects")}
+        className="mt-12 flex items-center  gap-2 border border-primary-color2 rounded-full px-4 py-2 cursor-pointer"
+      >
+        <span className="text-primary-color1 font-semibold">
+          See More Projects
+        </span>
+        <motion.span
+          animate={{
+            x: [0, 5, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <ChevronsRight className="w-5 h-5 text-primary-color1  font-bold" />
+        </motion.span>
+      </motion.div>
     </motion.section>
   );
 }

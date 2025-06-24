@@ -104,25 +104,6 @@ const Hero = () => {
             <span className="absolute inset-0 bg-primary-color1/10 transition-opacity duration-300 group-hover:opacity-100" />
           </button>
         </motion.div>
-
-        {/* Animated screenshot with floating effect */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="relative z-10 mx-auto mt-20 max-w-6xl"
-        >
-          <div className="absolute -inset-4 rounded-3xl bg-primary-color1/20 blur-xl" />
-          <div className="relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-2xl dark:border-neutral-800 dark:bg-neutral-900">
-            <img
-              src="/images/future hero.png"
-              alt="Software preview"
-              className="h-auto w-full object-cover"
-              width={1200}
-              height={600}
-            />
-          </div>
-        </motion.div>
       </div>
     </div>
   );
