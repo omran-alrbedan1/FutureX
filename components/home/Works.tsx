@@ -53,7 +53,7 @@ export default function Works() {
               borderRadius="1rem"
               duration={5000 + Math.random() * 2000}
               onClick={() => router.push(`/projects/${project.id}`)}
-              className="dark:bg-darkMod-400 text-black border border-gray-200 dark:border-none p-0 overflow-hidden"
+              className="dark:bg-slate-900  text-black border border-gray-200 dark:border-none p-0 overflow-hidden"
             >
               <div className="relative h-full bg-white rounded-xl overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-xl dark:bg-gray-800/70 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
                 {/* Image with shine effect */}
@@ -116,30 +116,51 @@ export default function Works() {
           </motion.div>
         ))}
       </div>
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-        viewport={{ once: true }}
+        transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
+        viewport={{ once: true, margin: "-20px" }}
         onClick={() => router.push("/projects")}
-        className="mt-12 flex items-center  gap-2 border border-primary-color2 rounded-full px-4 py-2 cursor-pointer"
+        className="mt-12 group relative overflow-hidden"
       >
-        <span className="text-primary-color1 font-semibold">
-          See More Projects
-        </span>
+        <div className="relative z-10 flex items-center gap-2 border border-primary-color2 rounded-full px-6 py-3 cursor-pointer bg-transparent  transition-colors duration-300">
+          <motion.span
+            className="text-primary-color1 font-medium text-lg"
+            transition={{ type: "spring", stiffness: 400 }}
+          >
+            See More Projects
+          </motion.span>
+
+          <motion.div
+            className="relative w-5 h-5"
+            animate={{
+              x: [0, 4, 0],
+            }}
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: [0.4, 0, 0.2, 1],
+            }}
+          >
+            <ChevronsRight className="absolute inset-0 w-full h-full text-primary-color1" />
+            <ChevronsRight
+              className="absolute inset-0 w-full h-full text-primary-color2"
+              style={{ opacity: 0 }}
+            />
+          </motion.div>
+        </div>
+
+        {/* Animated border effect */}
         <motion.span
-          animate={{
-            x: [0, 5, 0],
+          className="absolute inset-0 rounded-full border-2 border-transparent pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileHover={{
+            opacity: 1,
+            borderColor: "rgba(var(--primary-color2), 0.3)",
           }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <ChevronsRight className="w-5 h-5 text-primary-color1  font-bold" />
-        </motion.span>
+          transition={{ duration: 0.4 }}
+        />
       </motion.div>
     </motion.section>
   );

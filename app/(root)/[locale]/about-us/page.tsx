@@ -220,8 +220,9 @@ const AboutPage = async () => {
   return (
     <main className="min-h-[100vh] overflow-y-auto relative">
       <div className="relative h-[60vh] flex items-center justify-center">
-        <Image src={"/images/hero4.jpg"} alt="about_us_image" fill />
-        <div className="absolute inset-0 bg-black/80 z-0"></div>
+        <Image src={"/images/hero1.jpg"} alt="about_us_image" fill />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/60" />
+
         <div className="relative z-10 text-center px-4">
           <Animate x="0" y="20px" delay={0.2} duration={0.8} once>
             <motion.div
@@ -235,7 +236,7 @@ const AboutPage = async () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="bg-clip-text text-transparent bg-gradient-to-r from-[#183459] to-primary-color1"
+                  className="bg-clip-text text-transparent bg-gradient-to-r  from-primary-color2 to-primary-color2/70"
                 >
                   About
                 </motion.span>
@@ -243,7 +244,7 @@ const AboutPage = async () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4, duration: 0.8 }}
-                  className="bg-clip-text ml-2 text-transparent bg-gradient-to-r from-primary-color2 to-primary-color2/70 dark:from-secondary dark:to-secondary/70"
+                  className="bg-clip-text ml-2 text-transparent bg-gradient-to-r from-primary-color2 to-primary-color2/70 "
                 >
                   Us
                 </motion.span>
@@ -251,7 +252,7 @@ const AboutPage = async () => {
             </motion.div>
           </Animate>
           <Animate x="0" y="20px" delay={0.4} duration={0.8} once>
-            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-primary-color1 max-w-2xl mx-auto">
               Where the Future Becomes a Tangible Experience
             </p>
           </Animate>

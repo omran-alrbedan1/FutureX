@@ -42,10 +42,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   }, [heightTransform, currentHeight]);
 
   return (
-    <div
-      className="w-full bg-white dark:bg-neutral-950 font-sans"
-      ref={containerRef}
-    >
+    <div className="w-full  font-sans" ref={containerRef}>
       <div ref={ref} className="relative max-w-5xl mx-auto pb-10">
         {data.map((item, index) => {
           const isActive = useTransform(

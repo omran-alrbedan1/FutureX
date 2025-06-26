@@ -15,17 +15,18 @@
     /* Light Theme Colors */
     --background: 0 0% 100%; /* white */
     --foreground: 0 0% 3.9%; /* almost black */
-    
-    /* Primary Colors */
-    --primary: 180 97% 27%; /* teal */
+
+    /* Primary Colors - Updated to #2e6399 (RGB: 46, 99, 153) */
+    /* Primary Colors - #2e6399 */
+    --primary: 210 54% 39%; /* #2e6399 */
     --primary-foreground: 0 0% 100%; /* white */
-    --primary-hover: 180 97% 23%; /* darker teal */
-    --primary-active: 180 97% 20%; /* even darker teal */
-    
+    --primary-hover: 210 54% 39%; /* same as primary */
+    --primary-active: 210 54% 39%; /* same as primary */
+
     /* Additional Colors */
     --primary-color2: 0 0% 0%; /* black */
     --primary-color3: 0 0% 100%; /* white */
-    
+
     /* Sidebar Colors - Light Theme */
     --sidebar-background: 0 0% 98%; /* very light gray */
     --sidebar-foreground: 240 5.3% 26.1%; /* dark gray */
@@ -34,8 +35,8 @@
     --sidebar-accent: 240 4.8% 95.9%; /* light gray */
     --sidebar-accent-foreground: 240 5.9% 10%; /* very dark gray */
     --sidebar-border: 220 13% 91%; /* light gray */
-    --sidebar-ring: 180 97% 27%; /* teal (same as primary) */
-    
+    --sidebar-ring: 210 54% 39%; /* updated to match primary */
+
     /* Input Placeholder */
     .ant-input::placeholder {
       color: hsl(220, 9%, 46%) !important; /* gray-500 */
@@ -46,33 +47,33 @@
     /* Dark Theme Colors */
     --background: 20 14.3% 4.1%; /* very dark brown */
     --foreground: 0 0% 95%; /* very light gray */
-    
+
     /* Card Colors */
     --card: 24 9.8% 10%; /* dark brown */
     --card-foreground: 0 0% 95%; /* very light gray */
-    
+
     /* Popover Colors */
     --popover: 0 0% 9%; /* very dark gray */
     --popover-foreground: 0 0% 95%; /* very light gray */
-    
+
     /* Primary Colors - Dark Theme */
-    --primary: 180 97% 27%; /* teal (same as light theme) */
-    --primary-foreground: 180 80% 95%; /* very light teal */
-    --ring: 180 97% 27%; /* teal */
-    
+    --primary: 210 54% 39%; /* #2e6399 */
+    --primary-foreground: 0 0% 95%; /* very light gray */
+    --ring: 210 54% 39%; /* updated to match primary */
+
     /* Border Color */
     --border: 240 3.7% 15.9%; /* dark gray */
-    
+
     /* Sidebar Colors - Dark Theme */
     --sidebar-background: 240 5.9% 10%; /* very dark gray */
     --sidebar-foreground: 240 4.8% 95.9%; /* very light gray */
-    --sidebar-primary: 180 97% 27%; /* teal */
+    --sidebar-primary: 210 54% 39%; /* updated to match primary */
     --sidebar-primary-foreground: 0 0% 100%; /* white */
     --sidebar-accent: 240 3.7% 15.9%; /* dark gray */
     --sidebar-accent-foreground: 240 4.8% 95.9%; /* very light gray */
     --sidebar-border: 240 3.7% 15.9%; /* dark gray */
-    --sidebar-ring: 180 97% 27%; /* teal */
-    
+    --sidebar-ring: 210 54% 39%; /* updated to match primary */
+
     /* Input Placeholder - Dark Theme */
     .ant-input::placeholder {
       color: hsl(215, 14%, 64%) !important; /* gray-400 */
@@ -82,14 +83,8 @@
   /* Base HTML Elements Styling */
   body {
     @apply bg-background text-foreground font-sans;
-    font-family: 'Work Sans', sans-serif;
+    font-family: "Work Sans", sans-serif;
   }
-
-  /* Hide scrollbar for WebKit browsers */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
 
   /* Scrollbar Styling */
   ::-webkit-scrollbar {
@@ -102,7 +97,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary-color3));
+    background: hsl(var(--primary));
     border-radius: 4px;
   }
 
@@ -111,4 +106,12 @@
   }
 }
 
+/* Hide scrollbar for WebKit browsers */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
+/* Hide scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+}

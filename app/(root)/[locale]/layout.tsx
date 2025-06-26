@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import WhatsAppFloatingButton from "@/components/elements/WhatsAppFloatingButton";
 import Footer from "@/components/parts/Footer";
 import Header from "@/components/parts/Header";
 import { AntdProvider } from "@/components/providers/AntdProvider";
@@ -36,7 +37,7 @@ export default async function LocaleLayout({
       dir={params.locale === "ar" ? "rtl" : "ltr"}
       suppressHydrationWarning
     >
-      <body>
+      <body className=" dark:bg-[#0B192C]">
         <Providers>
           <NextIntlClientProvider locale={params.locale} messages={messages}>
             <ThemeProvider>
@@ -44,6 +45,7 @@ export default async function LocaleLayout({
                 <Header />
                 <div className="mt-20">{children}</div>
                 <Footer />
+                <WhatsAppFloatingButton />
               </AntdProvider>
             </ThemeProvider>
           </NextIntlClientProvider>

@@ -123,19 +123,24 @@ const Header = () => {
   }
 
   return (
-    <header className="fixed top-0 w-full dark:bg-darkMod-200 bg-white z-50 shadow-md">
+    <header className="fixed top-0 w-full dark:bg-[#0B192C] bg-white z-50 shadow-md">
       <div className="container mx-auto flex justify-between items-center h-16 lg:h-24 px-4 lg:px-8">
         <Link
           href="/home"
-          className="flex items-center focus:!border-none border-none"
+          className="flex items-center justify-center focus:!border-none border-none"
         >
           <Image
-            src={images.logo}
-            width={windowWidth > 1024 ? 150 : 50}
-            height={windowWidth > 1024 ? 160 : 30}
+            src={images.logo2}
+            width={windowWidth > 1024 ? 100 : 50}
+            height={windowWidth > 1024 ? 100 : 30}
             alt="logo"
             priority
+            className="lg:-mt-2"
           />
+          <h2 className="mt-2 text-lg sm:text-xl font-semibold xl:text-3xl ">
+            Future X
+          </h2>
+                  
         </Link>
 
         {/* Desktop Navigation */}
@@ -177,7 +182,7 @@ const Header = () => {
                 <NavigationMenuList>
                   <NavigationMenuItem>
                     <NavigationMenuTrigger
-                      className={`text-[16px] font-medium rounded-md transition-colors ${
+                      className={`text-[16px] font-medium rounded-md dark:bg-[#0B192C] transition-colors ${
                         isActiveLink("/en/services")
                           ? "text-primary-color1"
                           : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
@@ -185,13 +190,13 @@ const Header = () => {
                     >
                       Our Services
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <motion.ul
+                    <NavigationMenuContent className="!border-none">
+                      <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="grid w-[400px] gap-2 p-6 md:w-[600px] md:grid-cols-2 lg:w-[800px] shadow-xl bg-white dark:bg-darkMod-200 rounded-xl border border-gray-100 dark:border-gray-700"
+                        className="grid w-[400px] gap-2 p-6 md:w-[600px] md:grid-cols-2 lg:w-[800px] border-3 !border-blue-700  bg-white dark:bg-slate-900  rounded-xl"
                       >
                         {services.map((service, index) => (
                           <motion.li
@@ -273,7 +278,7 @@ const Header = () => {
                             </NavigationMenuLink>
                           </motion.li>
                         ))}
-                      </motion.ul>
+                      </motion.div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                 </NavigationMenuList>

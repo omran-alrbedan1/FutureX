@@ -7,7 +7,7 @@ import Clients from "@/components/home/Clients";
 const Page = async () => {
   return (
     <Suspense fallback={<Loader />}>
-      <div className="relative duration-500">
+      <div className="relative duration-500  dark:bg-[#0B192C]">
         <Hero />
         <Services />
         <Works />

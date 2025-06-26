@@ -106,7 +106,7 @@ const Page = () => {
                   borderRadius="1.25rem"
                   duration={6000 + index * 500}
                   onClick={() => router.push(`/projects/${project.id}`)}
-                  className="bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 p-0 h-full group"
+                  className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 p-0 h-full group"
                 >
                   <div className="relative h-full rounded-xl overflow-hidden transition-all duration-300 group-hover:shadow-2xl">
                     <div className="relative h-56 overflow-hidden">
@@ -205,7 +205,10 @@ const Page = () => {
             whileTap={{ scale: 0.98 }}
             className="inline-block"
           >
-            <button className="px-6 py-3 text-lg font-semibold bg-gradient-to-r from-primary-color1/60 to-primary-color1 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+            <button
+              onClick={() => router.push("/consultation")}
+              className="px-6 py-3 text-lg font-semibold bg-gradient-to-r from-primary-color1/60 to-primary-color1 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden"
+            >
               <span className="relative z-10 flex items-center gap-2">
                 Start your project
                 <motion.span
