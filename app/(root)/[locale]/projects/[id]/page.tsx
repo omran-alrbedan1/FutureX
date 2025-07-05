@@ -1,113 +1,49 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
-import { Folder, User, Calendar, Code } from "lucide-react";
+import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
+import { getProjectById } from "@/constants/projects";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
-  Bell,
-  Clock,
+  Calendar,
   ExternalLink,
-  Headphones,
-  MapPin,
-  Smartphone,
-  Server,
-  Map,
-  CreditCard,
+  Folder,
   ShieldCheck,
-  Users,
-  Globe,
-  PackageCheck,
+  User,
 } from "lucide-react";
-import Link from "next/link";
 import { useTheme } from "next-themes";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 
 const Page = () => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { id } = useParams();
+  const project = getProjectById(Number(id));
+  if (!project) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
+            404
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300">
+            Project not found
+          </p>
+          <Link
+            href="/projects"
+            className="mt-6 inline-block px-6 py-3 bg-primary-color1 text-white rounded-lg font-medium hover:bg-primary-color1/90 transition-colors"
+          >
+            Browse Projects
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const project = {
-    id: 1,
-    title: "Tigree - Food Delivery",
-    description:
-      "Food delivery app designed specifically for Palestine with real-time order tracking",
-    longDescription:
-      "Tigree is revolutionizing food delivery in Palestine with cutting-edge technology tailored to local needs. Our platform bridges the gap between hungry customers and local restaurants through an intuitive mobile experience featuring real-time tracking, seamless payments, and exceptional support.",
-    category: "Mobile App",
-    features: [
-      {
-        title: "Restaurant Discovery",
-        description: "Find local restaurants by location",
-        icon: <MapPin className="w-5 h-5" />,
-      },
-      {
-        title: "Live Tracking",
-        description: "Real-time order tracking from kitchen to door",
-        icon: <Map className="w-5 h-5" />,
-      },
-      {
-        title: "Smart Notifications",
-        description: "Interactive updates at every order stage",
-        icon: <Bell className="w-5 h-5" />,
-      },
-    ],
-    image: "/images/hero1.jpg",
-    link: "/projects/tigree",
-    client: "Various Restaurants",
-    year: 2023,
-    challenges: [
-      "Inconsistent addressing systems in some areas",
-      "High expectations for delivery times",
-      "Diverse payment preferences (cash vs digital)",
-    ],
-    solutions: [
-      "GPS-powered location tracking with landmark references",
-      "Hyperlocal delivery partner network",
-      "Flexible payment options including cash on delivery",
-    ],
-    techStack: [
-      { name: "React Native", icon: <Smartphone className="w-4 h-4" /> },
-      { name: "Node.js", icon: <Server className="w-4 h-4" /> },
-      { name: "Firebase", icon: <ShieldCheck className="w-4 h-4" /> },
-      { name: "Google Maps API", icon: <Globe className="w-4 h-4" /> },
-      { name: "Stripe Payments", icon: <CreditCard className="w-4 h-4" /> },
-    ],
-
-    screenshots: [
-      {
-        title: "Discover Local Cuisine",
-        description:
-          "Browse hundreds of local restaurants with intuitive filters for cuisine, price, and delivery time",
-        image: "/images/hero1.jpg",
-        icon: <MapPin className="w-6 h-6" />,
-      },
-      {
-        title: "Real-Time Tracking",
-        description:
-          "Watch your order progress from preparation to delivery with live rider tracking",
-        image: "/images/hero2.jpg",
-        icon: <Clock className="w-6 h-6" />,
-      },
-      {
-        title: "Instant Updates",
-        description:
-          "Get notified at every stage with options to contact the restaurant or rider",
-        image: "/images/hero3.jpg",
-        icon: <Bell className="w-6 h-6" />,
-      },
-      {
-        title: "Secure Checkout",
-        description:
-          "Multiple payment options including cash on delivery with order protection",
-        image: "/images/hero4.jpg",
-        icon: <PackageCheck className="w-6 h-6" />,
-      },
-    ],
-  };
 
   const container = {
     hidden: { opacity: 0 },

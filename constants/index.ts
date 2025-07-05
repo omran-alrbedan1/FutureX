@@ -7,7 +7,6 @@ export const services = [
     description:
       "We specialize in Flutter to develop commercial, reliable, and efficient mobile applications for iOS and Android.",
     image: icons.mobile_application,
-    link: "/services/mobile-app",
   },
   {
     id: 2,

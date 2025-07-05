@@ -47,7 +47,7 @@ const Title: React.FC<TitleProps> = ({
       <motion.h2
         variants={variants[animationType]}
         transition={{ duration: 0.6, delay }}
-        className={`text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary-color1 to-primary-color1/90 dark:text-white bg-clip-text text-transparent ${titleClassName}`}
+        className={`text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2  bg-clip-text text-transparent ${titleClassName}`}
       >
         {title}
       </motion.h2>

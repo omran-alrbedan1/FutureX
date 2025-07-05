@@ -35,7 +35,7 @@ const services = [
     description:
       "We specialize in Flutter to develop commercial, reliable, and efficient mobile applications for iOS and Android.",
     image: icons.mobile_application,
-    link: "/services/mobile-app",
+    link: "/services/1",
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const services = [
     description:
       "Custom platforms to manage your business from anywhere using Laravel, Node.js, React, and ASP.NET.",
     image: icons.web_application,
-    link: "/services/web-app",
+    link: "/services/2",
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ const services = [
     description:
       "High-quality printing services including business cards, brochures, banners, and promotional materials.",
     image: icons.printer,
-    link: "/services/printing",
+    link: "/services/3",
   },
   {
     id: 4,
@@ -59,7 +59,7 @@ const services = [
     description:
       "Creating designs that make users comfortable and confident in your product.",
     image: icons.figma,
-    link: "/services/ui-ux",
+    link: "/services/4",
   },
   {
     id: 5,
@@ -67,7 +67,7 @@ const services = [
     description:
       "ERP, CRM, hospital/clinic systems, school systems, and POS solutions.",
     image: icons.system,
-    link: "/services/software",
+    link: "/services/5",
   },
   {
     id: 6,
@@ -75,7 +75,7 @@ const services = [
     description:
       "Social media management, targeted ads, and professional marketing campaigns.",
     image: icons.digital,
-    link: "/services/marketing",
+    link: "/services/6",
   },
 ];
 
@@ -137,10 +137,9 @@ const Header = () => {
             priority
             className="lg:-mt-2"
           />
-          <h2 className="mt-2 text-lg sm:text-xl font-semibold xl:text-3xl ">
+          <h2 className="mt-2 text-lg sm:text-xl font-semibold xl:text-3xl md:text-3xl lg:text-4xl  bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2  bg-clip-text text-transparent ">
             Future X
           </h2>
-                  
         </Link>
 
         {/* Desktop Navigation */}

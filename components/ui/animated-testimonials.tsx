@@ -1,4 +1,5 @@
 "use client";
+//@ts-ignore
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
@@ -47,8 +48,8 @@ export const AnimatedProjects = ({
   };
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 font-sans antialiased">
-      <div className="relative grid grid-cols-1  md:grid-cols-2 gap-24">
+    <div className="mx-auto max-w-5xl py-5   sm:py-10 font-sans antialiased">
+      <div className="relative grid grid-cols-1  md:grid-cols-2 gap-4 sm:gap-24">
         <div className="relative h-80 w-full">
           <AnimatePresence>
             {projects.map((project, index) => (
@@ -92,7 +93,7 @@ export const AnimatedProjects = ({
             ))}
           </AnimatePresence>
         </div>
-        <div className="flex flex-col justify-between py-4">
+        <div className="flex flex-col justify-between py-4 px-3">
           <motion.div
             key={active}
             initial={{

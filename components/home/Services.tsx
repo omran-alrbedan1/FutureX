@@ -60,7 +60,7 @@ export default function Services() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-12">
         {services.map((service, index) => {
           return (
-            <Link href={`services/${index}`}>
+            <Link href={`services/${service.id}`}>
               <motion.div
                 key={service.id}
                 initial={{ x: "-100px", y: 0, opacity: 0 }}
@@ -72,7 +72,7 @@ export default function Services() {
                 }}
                 className="group"
               >
-                <div className="relative h-full bg-white rounded-xl overflow-hidden p-6 shadow-sm transition-all duration-300 group-hover:shadow-md dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                <div className="relative h-full bg-white rounded-xl overflow-hidden p-6 shadow-sm transition-all duration-300 group-hover:shadow-md dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
                   <motion.div
                     variants={iconVariants}
                     className={`w-14 h-14 rounded-lg ${service.color} bg-opacity-10 flex items-center justify-center mb-6`}

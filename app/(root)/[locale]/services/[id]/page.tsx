@@ -1,176 +1,130 @@
 "use client";
 
 import { AnimatedProjects } from "@/components/ui/animated-testimonials";
-import { icons } from "@/constants/icons";
-import { motion } from "framer-motion";
+import { getServiceById } from "@/constants/services";
+import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  FaMobileAlt,
-  FaPaintBrush,
-  FaRocket,
-  FaSearch,
-  FaShieldAlt,
-  FaSync,
-} from "react-icons/fa";
+import { useParams } from "next/navigation";
+import { useEffect } from "react";
 
 const ServiceDetails = () => {
-  const service = {
-    id: 1,
-    title: "Mobile App Development",
-    description:
-      "We specialize in Flutter to develop commercial, reliable, and efficient mobile applications for iOS and Android. Our team delivers high-performance apps with beautiful UI/UX that drive business growth.",
-    longDescription: [
-      "Cross-platform development using Flutter for consistent performance across iOS and Android",
-      "Custom app development tailored to your business requirements",
-      "Integration with backend systems and third-party APIs",
-      "Rigorous testing to ensure bug-free performance",
-      "App store deployment and post-launch support",
-    ],
-    image: icons.mobile_application,
-    link: "/services/mobile-app",
-    features: [
-      {
-        icon: <FaMobileAlt className="text-primary-color1" />,
-        title: "Cross-Platform",
-        description: "Single codebase for both iOS and Android",
-      },
-      {
-        icon: <FaRocket className="text-primary-color1" />,
-        title: "High Performance",
-        description: "60fps smooth animations and fast load times",
-      },
-      {
-        icon: <FaPaintBrush className="text-primary-color1" />,
-        title: "Beautiful UI",
-        description: "Custom designs that match your brand",
-      },
-      {
-        icon: <FaShieldAlt className="text-primary-color1" />,
-        title: "Secure",
-        description: "Enterprise-grade security measures",
-      },
-      {
-        icon: <FaSync className="text-primary-color1" />,
-        title: "Real-time Sync",
-        description: "Instant data updates across devices",
-      },
-      {
-        icon: <FaSearch className="text-primary-color1" />,
-        title: "App Store Optimization",
-        description: "Higher visibility in app stores",
-      },
-    ],
-    technologies: [
-      "Flutter",
-      "Dart",
-      "Firebase",
-      "REST APIs",
-      "BLoC Pattern",
-      "GetX",
-    ],
-  };
+  const { id } = useParams();
+  const service = getServiceById(Number(id));
+  const controls = useAnimation();
 
-  const relatedProjects = [
-    {
-      id: 1,
-      title: "E-Commerce App",
-      description: "A complete shopping solution for your business",
-      detailedDescription: [
-        "Built with Flutter for cross-platform compatibility",
-        "Integrated with Firebase for real-time updates",
-        "Secure payment gateway integration",
-        "Admin dashboard for product management",
-        "Customer reviews and ratings system",
-      ],
-      image: "/images/hero1.jpg",
-      tags: ["Flutter", "Firebase", "Payment Gateway"],
-    },
-    {
-      id: 2,
-      title: "Fitness Tracker",
-      description: "Comprehensive health and fitness companion",
-      detailedDescription: [
-        "Workout planning and progress tracking",
-        "Nutrition and calorie intake monitoring",
-        "Integration with wearable devices",
-        "Personalized exercise recommendations",
-        "Social features for community motivation",
-      ],
-      image: "/images/hero2.jpg",
-      tags: ["Dart", "BLoC", "Health API"],
-    },
-    {
-      id: 3,
-      title: "Business Dashboard",
-      description: "Powerful analytics for your enterprise",
-      detailedDescription: [
-        "Real-time data visualization",
-        "Custom reporting tools",
-        "Team collaboration features",
-        "Data export in multiple formats",
-        "Role-based access control",
-      ],
-      image: "/images/hero3.jpg",
-      tags: ["GetX", "Charts", "REST API"],
-    },
-  ];
+  useEffect(() => {
+    controls.start("visible");
+  }, [controls]);
 
-  // Animation variants
+  if (!service) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
+            404
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300">
+            Service not found
+          </p>
+          <Link
+            href="/services"
+            className="mt-6 inline-block px-6 py-3 bg-primary-color1 text-white rounded-lg font-medium hover:bg-primary-color1/90 transition-colors"
+          >
+            Browse Services
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   const container = {
     hidden: { opacity: 0 },
-    show: {
+    visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
+        delayChildren: 0.2,
       },
     },
   };
 
-  const listItem = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.8 } },
+  };
+
+  const iconHover = {
+    scale: 1.1,
+    rotate: 5,
+    transition: { type: "spring", stiffness: 300 },
   };
 
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8 pt-40 ">
+    <div className="py-12 px-4 sm:px-6 lg:px-8 sm:pt-20">
       <div className="max-w-6xl mx-auto">
-        <motion.div className="flex flex-col md:flex-row items-center gap-8 mb-16">
+        {/* Hero Section */}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={container}
+          className="flex flex-col md:flex-row items-center gap-8 mb-10"
+        >
           <motion.div
-            initial={{ x: "-50", y: 0, opacity: 0 }}
-            whileInView={{ x: 0, y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.2, once: true }}
+            variants={item}
             className="w-full md:w-1/3 flex justify-center"
           >
-            <div className="p-6 rounded-2xl ">
-              <Image
-                src={service.image}
-                alt={service.title}
-                width={200}
-                height={200}
-                className="w-36 h-36 object-contain"
-              />
+            <div className="sm:p-6 rounded-2xl ">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  width={200}
+                  height={200}
+                  className="w-32 h-32 sm:w-36 sm:h-36 object-contain"
+                />
+              </motion.div>
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ x: 0, y: 100, opacity: 0 }}
-            whileInView={{ x: 0, y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.3, once: true }}
-            className="w-full md:w-2/3"
-          >
-            <h1 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-4">
+          <motion.div variants={item} className="w-full md:w-2/3">
+            <motion.h1
+              variants={fadeIn}
+              className="text-2xl md:text-2xl font-bold mb-4 dark:text-white text-transparent "
+            >
               {service.title}
-            </h1>
-            <p className="text-sm lg:text-md text-gray-600 dark:text-gray-300 mb-6">
-              {service.description}
-            </p>
-            <motion.div variants={container} className="flex flex-wrap gap-3">
+            </motion.h1>
+            <motion.p
+              variants={fadeIn}
+              className="sm:text-lg text-gray-600 dark:text-gray-300 mb-6"
+            >
+              {service.shortDescription}
+            </motion.p>
+            <motion.div
+              variants={container}
+              className="flex flex-wrap gap-3 mt-6"
+            >
               {service.technologies.map((tech, index) => (
                 <motion.span
                   key={index}
-                  variants={listItem}
-                  className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm"
+                  variants={item}
+                  whileHover={{ scale: 1.05 }}
+                  className="px-4 py-2 bg-gradient-to-r from-primary-color1/10 to-primary-color2/10 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium backdrop-blur-sm"
                 >
                   {tech}
                 </motion.span>
@@ -179,115 +133,150 @@ const ServiceDetails = () => {
           </motion.div>
         </motion.div>
 
-        <div className="mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={container}
+          className="mb-10  p-2 sm:p-8 rounded-3xl backdrop-blur-sm  "
+        >
           <motion.h2
-            initial={{ x: "-30px", y: 0, opacity: 0 }}
-            whileInView={{ x: 0, y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2, once: true }}
-            className="text-lg sm:text-2xl font-semibold text-gray-800 dark:text-white mb-6"
+            variants={fadeIn}
+            className="text-xl md:text-2xl font-bold mb-8 dark:text-white"
           >
-            Our Mobile App Development Services
+            Our {service.title} Services
           </motion.h2>
-          <ul className="space-y-3">
+          <ul className="space-y-4">
             {service.longDescription.map((item, index) => (
               <motion.li
                 key={index}
-                initial={{ x: 0, y: 30, opacity: 0 }}
-                whileInView={{ x: 0, y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 * index, once: true }}
-                className="flex items-start"
+                // variants={item}
+                className="flex items-start group"
               >
-                <svg
-                  className="w-5 h-5 text-primary-color1 mt-1 mr-3"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <motion.div
+                  whileHover={iconHover}
+                  className="flex-shrink-0 mt-1 mr-4"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                  <svg
+                    className="w-4 h-4 sm:w-6 sm:h-6 text-primary-color1 group-hover:text-primary-color2 transition-colors"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                </motion.div>
+                <span className="text-gray-700 dark:text-gray-300 sm:text-lg">
+                  {item}
+                </span>
               </motion.li>
             ))}
           </ul>
-        </div>
-
-        <div className="mb-16">
-          <motion.h2
-            initial={{ x: "-30px", y: 0, opacity: 0 }}
-            whileInView={{ x: 0, y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2, once: true }}
-            className="text-lg text-2xl font-semibold text-gray-800 dark:text-white mb-6"
-          >
-            Key Features
-          </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {service.features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ x: 0, y: 50, opacity: 0 }}
-                whileInView={{ x: 0, y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 * index, once: true }}
-                className="p-4 bg-white dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-md bg-blue-100 dark:bg-blue-900/30">
-                    {feature.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        <motion.div
-          initial={{ x: 0, y: 50, opacity: 0 }}
-          whileInView={{ x: 0, y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2, once: true }}
-        >
-          <div className="text-start mb-12">
-            <h2 className="text-lg lg:text-2xl font-semibold text-gray-900 dark:text-white mb-3">
-              Our Mobile App Projects
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl ">
-              Explore some of our recent Flutter mobile application developments
-            </p>
-          </div>
-
-          <AnimatedProjects projects={relatedProjects} />
         </motion.div>
 
         <motion.div
-          initial={{ x: 0, y: 50, opacity: 0 }}
-          whileInView={{ x: 0, y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2, once: true }}
-          className="text-center pt-5"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={container}
+          className="mb-16"
         >
-          <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Ready to build your mobile app?
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-            Let's discuss how we can create a powerful mobile solution for your
-            business.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-3 bg-primary-color1 hover:bg-primary-color1/90 text-white rounded-lg font-medium  transition-all duration-300 shadow-lg hover:shadow-xl dark:shadow-primary-color1/20"
+          <motion.h2
+            variants={fadeIn}
+            className="text-2xl md:text-3xl font-bold mb-8 sm:text-center bg-clip-text text-transparent bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2"
           >
-            Contact Us
-          </Link>
+            Key Features
+          </motion.h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+            {service.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                variants={item}
+                whileHover={{ y: -5 }}
+                className="p-6  shadow-hidden hover:shadow-lg transition-all duration-300 group dark:bg-gray-900"
+              >
+                <motion.div
+                  whileHover={iconHover}
+                  className="p-3 rounded-lg bg-gradient-to-r from-primary-color1/10 to-primary-color2/10 w-fit mb-4"
+                >
+                  {feature.icon}
+                </motion.div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary-color1 transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {service.relatedProjects && service.relatedProjects.length > 0 ? (
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={container}
+            className="sm:mb-16"
+          >
+            <div className="sm:text-center mb-12">
+              <motion.h2
+                variants={fadeIn}
+                className="text-2xl md:text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2"
+              >
+                Our {service.title} Projects
+              </motion.h2>
+              <motion.p
+                variants={fadeIn}
+                className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto sm:text-lg"
+              >
+                Explore some of our recent {service.title.toLowerCase()}{" "}
+                developments
+              </motion.p>
+            </div>
+
+            <AnimatedProjects
+              //@ts-ignore
+              projects={service.relatedProjects}
+            />
+          </motion.div>
+        ) : (
+          <></>
+        )}
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={container}
+          className="text-center pt-10 sm:pt-0"
+        >
+          <motion.div
+            variants={fadeIn}
+            className="bg-gradient-to-r from-primary-color1/10 to-primary-color1/10 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 backdrop-blur-sm"
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-4">
+              Ready to {service.title.toLowerCase()}?
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto sm:text-lg">
+              Let's discuss how we can create a powerful solution for your
+              business.
+            </p>
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <Link
+                href="/contact-us"
+                className="inline-block px-8 py-3 sm:py-4 bg-primary-color1 text-white rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl dark:shadow-primary-color1/30"
+              >
+                Contact Us
+              </Link>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
