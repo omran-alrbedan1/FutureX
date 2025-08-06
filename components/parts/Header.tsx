@@ -6,7 +6,13 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Drawer, Menu } from "antd";
 
-import { Menu as MenuIcon, PhoneIcon, X, User } from "lucide-react";
+import {
+  Menu as MenuIcon,
+  PhoneIcon,
+  X,
+  User,
+  ChevronDown,
+} from "lucide-react";
 import { SlInfo } from "react-icons/sl";
 import { MdOutlineMiscellaneousServices } from "react-icons/md";
 import { GrHomeRounded } from "react-icons/gr";
@@ -82,9 +88,11 @@ const services = [
 const Header = () => {
   const t = useTranslations("header");
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const path = usePathname();
   const [windowWidth, setWindowWidth] = useState(0);
   const [isClient, setIsClient] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
 
   const isArabic = path.includes("/ar");
@@ -103,9 +111,17 @@ const Header = () => {
       }
     };
 
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
     handleResize();
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [open]);
 
   const showDrawer = () => setOpen(true);
@@ -114,8 +130,8 @@ const Header = () => {
   if (!isClient) {
     return (
       <header className="fixed top-0 w-full h-16 bg-white dark:bg-darkMod-200 z-50 shadow-md">
-        <div className="flex justify-between items-center h-full px-6">
-          <div className="w-32 h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
+        <div className="flex justify-between items-center h-full px-4 sm:px-6">
+          <div className="w-24 sm:w-32 h-8 sm:h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
           <div className="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded"></div>
         </div>
       </header>
@@ -123,36 +139,69 @@ const Header = () => {
   }
 
   return (
-    <header className="fixed top-0 w-full dark:bg-[#0B192C] bg-white z-50 shadow-md">
-      <div className="container mx-auto flex justify-between items-center h-16 lg:h-24 px-4 lg:px-8">
+    <header
+      className={`fixed top-0 w-full dark:bg-[#0B192C] bg-white z-50 transition-all duration-300 ${
+        isScrolled
+          ? "shadow-lg backdrop-blur-md bg-white/95 dark:bg-[#0B192C]/95"
+          : "shadow-md"
+      }`}
+    >
+      <div className="container mx-auto flex justify-between items-center h-14 sm:h-16 lg:h-20 xl:h-24 px-3 sm:px-4 lg:px-6 xl:px-8">
+        {/* Logo Section - Responsive */}
         <Link
           href="/home"
-          className="flex items-center justify-center focus:!border-none border-none"
+          className="flex items-center justify-center focus:!border-none border-none shrink-0"
         >
           <Image
             src={images.logo2}
-            width={windowWidth > 1024 ? 100 : 50}
-            height={windowWidth > 1024 ? 100 : 30}
-            alt="logo"
+            width={
+              windowWidth >= 1280
+                ? 80
+                : windowWidth >= 1024
+                ? 65
+                : windowWidth >= 768
+                ? 45
+                : 35
+            }
+            height={
+              windowWidth >= 1280
+                ? 80
+                : windowWidth >= 1024
+                ? 65
+                : windowWidth >= 768
+                ? 45
+                : 35
+            }
+            alt="Future X logo"
             priority
-            className="lg:-mt-2"
+            className="transition-all duration-300"
           />
-          <h2 className="mt-2 text-lg sm:text-xl font-semibold xl:text-3xl md:text-3xl lg:text-4xl  bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2  bg-clip-text text-transparent ">
+          <h2
+            className={`ml-1 sm:ml-2 font-semibold bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2 bg-clip-text text-transparent transition-all duration-300 ${
+              windowWidth >= 1280
+                ? "text-2xl xl:text-3xl"
+                : windowWidth >= 1024
+                ? "text-xl lg:text-2xl"
+                : windowWidth >= 768
+                ? "text-lg"
+                : "text-base"
+            }`}
+          >
             Future X
           </h2>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-2 xl:gap-4">
           <nav className="flex items-center">
-            <ul className="flex space-x-6">
+            <ul className="flex space-x-3 xl:space-x-6">
               {/* Home */}
               <li>
                 <Link
                   href="/home"
-                  className={`text-[16px] font-medium px-3 py-2 rounded-md transition-colors ${
+                  className={`text-sm xl:text-base font-medium px-2 xl:px-3 py-2 rounded-md transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 ${
                     isActiveLink("/en/home")
-                      ? "text-primary-color1"
+                      ? "text-primary-color1 "
                       : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
                   }`}
                   style={{ direction: isArabic ? "rtl" : "ltr" }}
@@ -165,9 +214,9 @@ const Header = () => {
               <li>
                 <Link
                   href="/about-us"
-                  className={`text-[16px] font-medium px-3 py-2 rounded-md transition-colors ${
+                  className={`text-sm xl:text-base font-medium px-2 xl:px-3 py-2 rounded-md transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 ${
                     isActiveLink("/en/about-us")
-                      ? "text-primary-color1 fontsm"
+                      ? "text-primary-color1 "
                       : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
                   }`}
                   style={{ direction: isArabic ? "rtl" : "ltr" }}
@@ -181,9 +230,9 @@ const Header = () => {
                 <NavigationMenuList>
                   <NavigationMenuItem>
                     <NavigationMenuTrigger
-                      className={`text-[16px] font-medium rounded-md dark:bg-[#0B192C] transition-colors ${
+                      className={`text-sm xl:text-base font-medium rounded-md dark:bg-[#0B192C] transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 ${
                         isActiveLink("/en/services")
-                          ? "text-primary-color1"
+                          ? "text-primary-color1 "
                           : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
                       }`}
                     >
@@ -195,7 +244,13 @@ const Header = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="grid w-[400px] gap-2 p-6 md:w-[600px] md:grid-cols-2 lg:w-[800px] border-3 !border-blue-700  bg-white dark:bg-slate-900  rounded-xl"
+                        className={`grid gap-2 p-4 xl:p-6 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 ${
+                          windowWidth >= 1280
+                            ? "w-[800px] md:grid-cols-2"
+                            : windowWidth >= 1024
+                            ? "w-[600px] md:grid-cols-2"
+                            : "w-[500px] grid-cols-1"
+                        }`}
                       >
                         {services.map((service, index) => (
                           <motion.li
@@ -213,18 +268,18 @@ const Header = () => {
                             <NavigationMenuLink asChild>
                               <Link
                                 href={service.link}
-                                className={`block select-none space-y-1 p-4 no-underline outline-none transition-all duration-300 hover:bg-gray-50 dark:hover:bg-darkMod-300 h-full ${
+                                className={`block select-none space-y-1 p-3 xl:p-4 no-underline outline-none transition-all duration-300 hover:bg-gray-50 dark:hover:bg-darkMod-300 h-full rounded-lg ${
                                   isActiveLink(service.link)
                                     ? "bg-gray-50 dark:bg-darkMod-300"
                                     : ""
                                 }`}
                               >
-                                <div className="flex items-start gap-4">
-                                  <motion.div className="shrink-0 p-3 group-hover:rotate-3 rounded-xl bg-primary-color1/10 group-hover:bg-primary-color1/20 transition-all duration-300">
+                                <div className="flex items-start gap-3">
+                                  <motion.div className="shrink-0 p-2 xl:p-3 group-hover:rotate-3 rounded-xl  group-hover:bg-primary-color1/20 transition-all duration-300">
                                     <Image
                                       src={service.image}
-                                      width={42}
-                                      height={42}
+                                      width={windowWidth >= 1280 ? 42 : 36}
+                                      height={windowWidth >= 1280 ? 42 : 36}
                                       alt={service.title}
                                       className={`${
                                         isActiveLink(service.link)
@@ -236,9 +291,9 @@ const Header = () => {
                                     />
                                   </motion.div>
 
-                                  <div className="flex-1 space-y-2">
+                                  <div className="flex-1 space-y-1 xl:space-y-2">
                                     <h3
-                                      className={`text-sm font-semibold ${
+                                      className={`text-xs xl:text-sm font-semibold ${
                                         isActiveLink(service.link)
                                           ? "text-primary-color1"
                                           : "text-gray-900 dark:text-white group-hover:text-primary-color1"
@@ -246,20 +301,15 @@ const Header = () => {
                                     >
                                       {service.title}
                                     </h3>
-                                    <motion.div
-                                      initial={{ height: 40 }}
-                                      className="overflow-hidden"
+                                    <p
+                                      className={`text-xs leading-relaxed ${
+                                        isActiveLink(service.link)
+                                          ? "text-gray-700 dark:text-gray-300"
+                                          : "text-gray-600 dark:text-gray-400"
+                                      } transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300`}
                                     >
-                                      <p
-                                        className={`text-xs leading-relaxed leading max-w-32 ${
-                                          isActiveLink(service.link)
-                                            ? "text-gray-700 dark:text-gray-300"
-                                            : "text-gray-600 dark:text-gray-400"
-                                        } transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300`}
-                                      >
-                                        {service.description}
-                                      </p>
-                                    </motion.div>
+                                      {service.description}
+                                    </p>
                                   </div>
                                 </div>
 
@@ -267,12 +317,6 @@ const Header = () => {
                                 {isActiveLink(service.link) && (
                                   <div className="absolute top-0 right-0 w-1 h-full bg-primary-color1 rounded-l-full" />
                                 )}
-
-                                {/* Subtle hover effect */}
-                                <motion.div
-                                  className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-color1/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                  initial={{ scale: 0.9 }}
-                                />
                               </Link>
                             </NavigationMenuLink>
                           </motion.li>
@@ -287,9 +331,9 @@ const Header = () => {
               <li>
                 <Link
                   href="/projects"
-                  className={`text-[16px] font-medium px-3 py-2 rounded-md transition-colors ${
+                  className={`text-sm xl:text-base font-medium px-2 xl:px-3 py-2 rounded-md transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 ${
                     isActiveLink("/en/projects")
-                      ? "text-primary-color1"
+                      ? "text-primary-color1 "
                       : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
                   }`}
                   style={{ direction: isArabic ? "rtl" : "ltr" }}
@@ -302,9 +346,9 @@ const Header = () => {
               <li>
                 <Link
                   href="/en/contact-us"
-                  className={`text-[16px] font-medium px-3 py-2 rounded-md transition-colors ${
+                  className={`text-sm xl:text-base font-medium px-2 xl:px-3 py-2 rounded-md transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 ${
                     isActiveLink("/contact-us")
-                      ? "text-primary-color1"
+                      ? "text-primary-color1 "
                       : "text-gray-700 dark:text-gray-300 hover:text-primary-color1"
                   }`}
                   style={{ direction: isArabic ? "rtl" : "ltr" }}
@@ -315,174 +359,194 @@ const Header = () => {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-4 mb-2 ml-4">
+          <div className="flex items-center gap-2 xl:gap-4 ml-2 xl:ml-4">
             <ThemeToggler />
           </div>
         </div>
 
-        <div className="flex lg:hidden items-center gap-4">
+        {/* Mobile/Tablet Navigation Button */}
+        <div className="flex lg:hidden items-center gap-2 sm:gap-4">
+          <div className="hidden md:block">
+            <ThemeToggler />
+          </div>
           <button
-            className="text-primary-color1 focus:outline-none"
+            className="text-primary-color1 focus:outline-none p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
             onClick={showDrawer}
+            aria-label="Open navigation menu"
           >
-            <MenuIcon className="w-8 h-8" />
+            <MenuIcon className="w-6 h-6 sm:w-7 sm:h-7" />
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
-      {/* <Drawer
+      <Drawer
         title={
-          <div className="flex justify-between items-center">
-            <Link href="/home" className="flex items-center gap-1">
+          <div className="flex justify-between items-center w-full">
+            <Link
+              href="/home"
+              className="flex items-center gap-2"
+              onClick={onClose}
+            >
               <Image
-                src={images.logo}
-                width={50}
+                src={images.logo2}
+                width={40}
                 height={40}
-                alt="logo"
+                alt="Future X logo"
                 priority
               />
-              <p className="ml-3 text-lg font-bold text-primary-color1">
-                Optimal
-                <span className="text-[#005078] ml-2 dark:text-white-100">
-                  Path
-                </span>
-              </p>
+              <h2 className="text-lg font-bold bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2 bg-clip-text text-transparent">
+                Future X
+              </h2>
             </Link>
-            <button onClick={onClose}>
-              <X className="text-primary-color1" />
+            <button
+              onClick={onClose}
+              className="p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+            >
+              <X className="text-primary-color1 w-5 h-5" />
             </button>
           </div>
         }
         placement={isArabic ? "right" : "left"}
         onClose={onClose}
         open={open}
-        width={300}
+        width={windowWidth >= 768 ? 350 : 280}
         closable={false}
         className={`dark:bg-darkMod-200 bg-white ${
           isArabic ? "rtl-drawer" : ""
         }`}
+        styles={{
+          body: { padding: 0 },
+          header: {
+            borderBottom: "1px solid #e5e7eb",
+            padding: "16px 20px",
+          },
+        }}
         footer={
-          <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 dark:border-gray-700 md:hidden">
             <ThemeToggler />
           </div>
         }
       >
-        <div className="flex flex-col h-full pt-4">
-          <Menu
-            mode="inline"
-            items={[
-              {
-                key: "/home",
-                icon: <GrHomeRounded className="w-5 h-5" />,
-                label: (
-                  <Link
-                    href="/home"
-                    className={`text-[16px] font-medium ${
-                      isActiveLink("/home")
-                        ? "text-primary-color1"
-                        : "text-gray-800 dark:text-gray-200"
+        <div className="flex flex-col h-full">
+          <div className="flex-1 overflow-y-auto py-4">
+            {/* Mobile Navigation Menu */}
+            <nav className="space-y-2 px-4">
+              {/* Home */}
+              <Link
+                href="/home"
+                onClick={onClose}
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                  isActiveLink("/home")
+                    ? "text-primary-color1 "
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
+              >
+                <GrHomeRounded className="w-5 h-5" />
+                <span className="font-medium">{t("home")}</span>
+              </Link>
+
+              {/* About */}
+              <Link
+                href="/about-us"
+                onClick={onClose}
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                  isActiveLink("/about-us")
+                    ? "text-primary-color1 "
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
+              >
+                <SlInfo className="w-5 h-5" />
+                <span className="font-medium">{t("about")}</span>
+              </Link>
+
+              {/* Services with Submenu */}
+              <div className="space-y-2">
+                <button
+                  onClick={() => setServicesOpen(!servicesOpen)}
+                  className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all duration-300 ${
+                    isActiveLink("/services")
+                      ? "text-primary-color1 "
+                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <MdOutlineMiscellaneousServices className="w-5 h-5" />
+                    <span className="font-medium">Our Services</span>
+                  </div>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      servicesOpen ? "rotate-180" : ""
                     }`}
-                    style={{ direction: isArabic ? "rtl" : "ltr" }}
-                  >
-                    {t("home")}
-                  </Link>
-                ),
-              },
-              {
-                key: "/about-us",
-                icon: <SlInfo className="w-5 h-5" />,
-                label: (
-                  <Link
-                    href="/about-us"
-                    className={`text-[16px] font-medium ${
-                      isActiveLink("/about-us")
-                        ? "text-primary-color1"
-                        : "text-gray-800 dark:text-gray-200"
-                    }`}
-                    style={{ direction: isArabic ? "rtl" : "ltr" }}
-                  >
-                    {t("about")}
-                  </Link>
-                ),
-              },
-              {
-                key: "/services",
-                icon: <MdOutlineMiscellaneousServices className="w-5 h-5" />,
-                label: (
-                  <Link
-                    href="/services"
-                    className={`text-[16px] font-medium ${
-                      isActiveLink("/services")
-                        ? "text-primary-color1"
-                        : "text-gray-800 dark:text-gray-200"
-                    }`}
-                    style={{ direction: isArabic ? "rtl" : "ltr" }}
-                  >
-                    Our Services
-                  </Link>
-                ),
-              },
-              {
-                key: "/career",
-                icon: <IoBriefcaseOutline className="w-5 h-5" />,
-                label: (
-                  <Link
-                    href="/career"
-                    className={`text-[16px] font-medium ${
-                      isActiveLink("/career")
-                        ? "text-primary-color1"
-                        : "text-gray-800 dark:text-gray-200"
-                    }`}
-                    style={{ direction: isArabic ? "rtl" : "ltr" }}
-                  >
-                    {t("career")}
-                  </Link>
-                ),
-              },
-              {
-                key: "/contact-us",
-                icon: <PhoneIcon className="w-5 h-5" />,
-                label: (
-                  <Link
-                    href="/contact-us"
-                    className={`text-[16px] font-medium ${
-                      isActiveLink("/contact-us")
-                        ? "text-primary-color1"
-                        : "text-gray-800 dark:text-gray-200"
-                    }`}
-                    style={{ direction: isArabic ? "rtl" : "ltr" }}
-                  >
-                    {t("contact")}
-                  </Link>
-                ),
-              },
-              {
-                key: "/profile",
-                icon: <User className="w-5 h-5" />,
-                label: (
-                  <Link
-                    href="/profile"
-                    className={`text-[16px] font-medium ${
-                      isActiveLink("/profile")
-                        ? "text-primary-color1"
-                        : "text-gray-800 dark:text-gray-200"
-                    }`}
-                    style={{ direction: isArabic ? "rtl" : "ltr" }}
-                  >
-                    Profile
-                  </Link>
-                ),
-              },
-            ]}
-            selectedKeys={[path]}
-            className={`border-r-0 [&_.ant-menu-item]:!h-12 [&_.ant-menu-submenu-title]:!h-12 ${
-              isArabic ? "rtl-menu" : ""
-            }`}
-            style={{ direction: isArabic ? "rtl" : "ltr" }}
-          />
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {servicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="ml-6 space-y-1"
+                    >
+                      {services.map((service) => (
+                        <Link
+                          key={service.id}
+                          href={service.link}
+                          onClick={onClose}
+                          className={`flex items-center gap-3  py-2 rounded-lg transition-all duration-300 text-sm ${
+                            isActiveLink(service.link)
+                              ? "text-primary-color1 bg-primary-color1/5"
+                              : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50"
+                          }`}
+                        >
+                          <Image
+                            src={service.image}
+                            width={20}
+                            height={20}
+                            alt={service.title}
+                            className="shrink-0"
+                          />
+                          <span>{service.title}</span>
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Projects */}
+              <Link
+                href="/projects"
+                onClick={onClose}
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                  isActiveLink("/projects")
+                    ? "text-primary-color1 "
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
+              >
+                <IoBriefcaseOutline className="w-5 h-5" />
+                <span className="font-medium">{t("ourProjects")}</span>
+              </Link>
+
+              {/* Contact */}
+              <Link
+                href="/en/contact-us"
+                onClick={onClose}
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                  isActiveLink("/contact-us")
+                    ? "text-primary-color1 "
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
+              >
+                <PhoneIcon className="w-5 h-5" />
+                <span className="font-medium">{t("contact")}</span>
+              </Link>
+            </nav>
+          </div>
         </div>
-      </Drawer> */}
+      </Drawer>
     </header>
   );
 };

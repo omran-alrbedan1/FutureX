@@ -118,7 +118,7 @@ const FrequentlyAskedQuestions = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
             viewport={{ once: true, margin: "-20px" }}
-            onClick={() => router.push("https://wa.me/962780185759")}
+            onClick={() => router.push("/contact-us")}
             className="mt-12 group relative overflow-hidden"
           >
             <div className="text-center mt-12">
