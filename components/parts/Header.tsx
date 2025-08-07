@@ -147,8 +147,7 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto flex justify-between items-center h-14 sm:h-16 lg:h-20 xl:h-24 px-3 sm:px-4 lg:px-6 xl:px-8">
-        {/* Logo Section - Responsive */}
-        <Link
+        {/* <Link
           href="/home"
           className="flex items-center justify-center focus:!border-none border-none shrink-0"
         >
@@ -189,8 +188,50 @@ const Header = () => {
           >
             Future X
           </h2>
-        </Link>
+        </Link> */}
 
+        <Link
+          href="/home"
+          className="flex items-center justify-center focus:!border-none border-none shrink-0"
+        >
+          <Image
+            src={images.logo2}
+            width={
+              windowWidth >= 1280
+                ? 80
+                : windowWidth >= 1024
+                ? 65
+                : windowWidth >= 768
+                ? 45
+                : 35
+            }
+            height={
+              windowWidth >= 1280
+                ? 80
+                : windowWidth >= 1024
+                ? 65
+                : windowWidth >= 768
+                ? 45
+                : 35
+            }
+            alt="Future X logo"
+            priority
+            className="transition-all duration-300"
+          />
+          <h2
+            className={`ml-1 sm:ml-2 font-semibold bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2 dark:from-blue-400 dark:via-blue-300 dark:to-primary-color2 bg-clip-text text-transparent transition-all duration-300 ${
+              windowWidth >= 1280
+                ? "text-2xl xl:text-3xl"
+                : windowWidth >= 1024
+                ? "text-xl lg:text-2xl"
+                : windowWidth >= 768
+                ? "text-lg"
+                : "text-base"
+            }`}
+          >
+            Future X
+          </h2>
+        </Link>
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-2 xl:gap-4">
           <nav className="flex items-center">
@@ -370,7 +411,7 @@ const Header = () => {
             <ThemeToggler />
           </div>
           <button
-            className="text-primary-color1 focus:outline-none p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+            className="text-blue-400 focus:outline-none p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
             onClick={showDrawer}
             aria-label="Open navigation menu"
           >
@@ -395,15 +436,15 @@ const Header = () => {
                 alt="Future X logo"
                 priority
               />
-              <h2 className="text-lg font-bold bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2 bg-clip-text text-transparent">
+              <h2 className="text-lg font-bold bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2 dark:from-blue-400 dark:via-blue-300 dark:to-primary-color2  bg-clip-text text-transparent">
                 Future X
               </h2>
             </Link>
             <button
               onClick={onClose}
-              className="p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              className="p-1 rounded-md  hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
             >
-              <X className="text-primary-color1 w-5 h-5" />
+              <X className="dark:text-blue-400 w-5 h-5" />
             </button>
           </div>
         }
