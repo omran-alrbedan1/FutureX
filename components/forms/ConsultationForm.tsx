@@ -481,13 +481,17 @@ const ConsultationForm = () => {
           />
         </motion.div>
 
-        <CardFooter className="px-0 pb-0 flex justify-end">
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+        <CardFooter className="max-sm:w-full px-0 pb-0 flex justify-end">
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="max-sm:w-full"
+          >
             <Button
               type="submit"
               size="lg"
               disabled={isSubmitting}
-              className="px-8 rounded-[4px] bg-primary-color1 hover:bg-primary-color1/90 shadow-lg"
+              className="max-sm:w-full px-8 rounded-[4px] bg-primary-color1 hover:bg-primary-color1/90 shadow-lg"
             >
               {isSubmitting ? "Booking..." : "Book Consultation"}
             </Button>

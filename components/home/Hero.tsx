@@ -15,7 +15,7 @@ const Hero = () => {
           <div className="space-y-8 animate-fade-in-up">
             {/* Main Headline */}
             <div className="animate-slide-in-left">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
                 Building the
                 <br />
                 <span className="text-primary bg-clip-text ">Future</span>
@@ -25,7 +25,7 @@ const Hero = () => {
             </div>
 
             {/* Description Text */}
-            <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg animate-slide-in-left-delay">
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg animate-slide-in-left-delay">
               At Future X, we transform ideas into reality through cutting-edge
               mobile apps, stunning web development, innovative tech solutions,
               and premium printing services. Your vision, our expertise –

@@ -48,7 +48,7 @@ export default function Services() {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
-      className="flex flex-col w-full items-center px-5 sm:px-10 md:px-16 mx-auto mb-16 md:mb-20"
+      className="flex flex-col w-full items-center px-5 sm:px-10 md:px-16 mx-auto mb-16 md:mb-20 max-sm:mt-3"
     >
       <Title
         title="Our Services"
@@ -56,7 +56,6 @@ export default function Services() {
         titleClassName="font-serif"
         paragraphClassName="text-gray-600"
       />
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-12">
         {services.map((service, index) => {
           return (

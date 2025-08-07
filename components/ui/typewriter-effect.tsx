@@ -122,7 +122,10 @@ export const TypewriterEffectSmooth = ({
       <div>
         {wordsArray.map((word, idx) => {
           return (
-            <div key={`word-${idx}`} className="inline-block text-3xl">
+            <div
+              key={`word-${idx}`}
+              className="inline-block text-xl sm:text-2xl md:text-3xl"
+            >
               {word.text.map((char, index) => (
                 <span
                   key={`char-${index}`}

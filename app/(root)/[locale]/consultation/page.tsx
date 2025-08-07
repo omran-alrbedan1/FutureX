@@ -21,7 +21,7 @@ const words = [
 
 export default function page() {
   return (
-    <div className=" lg:grid lg:grid-cols-7 px-3 xl:px-20  py-5 sm:py-10">
+    <div className=" lg:grid lg:grid-cols-7 px-3 xl:px-20  py-2 sm:py-10">
       <motion.div
         initial={{ opacity: 0, x: -140 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -75,7 +75,7 @@ export default function page() {
             </motion.div>
           </CardHeader>
 
-          <CardContent className="p-8 ">
+          <CardContent className="sm:p-8 ">
             <ConsultationForm />
           </CardContent>
         </Card>
