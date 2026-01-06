@@ -46,7 +46,7 @@ const AboutPage = () => {
 
   return (
     <main className="min-h-[100vh] overflow-y-auto relative">
-      <section className="bg-gradient-to-r  py-20 max-sm:py-10 px-4 ">
+      <section className="bg-gradient-to-r  py-20 max-sm:pb-8 max-sm:py-10 px-4 ">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -289,7 +289,7 @@ const AboutPage = () => {
               </h2>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-6 max-sm:px-2">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -335,12 +335,12 @@ const AboutPage = () => {
             </div>
           </motion.div>
           <motion.div
-            className="lg:w-1/2 relative"
+            className="w-full lg:w-1/2 max-sm:px-2 relative"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-w-16 aspect-h-9 group">
+            <div className="relative rounded-2xl  overflow-hidden shadow-2xl aspect-w-16 aspect-h-9 group ">
               <div className="absolute inset-0 bg-gradient-to-br from-primary-color1/10 to-primary-color1/20 rounded-2xl pointer-events-none" />
 
               <video
@@ -456,9 +456,9 @@ const AboutPage = () => {
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className="border-none shadow-none p-6 hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <Card className="border-none shadow-none p-4 sm:p-6 hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
                   <motion.div
-                    className="bg-blue-100 dark:bg-blue-900/30 w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                    className="bg-blue-100 dark:bg-blue-900/30 w-12 h-10 sm:h-12 rounded-full flex items-center justify-center mb-4"
                     whileHover={{
                       scale: 1.1,
                       rotate: 10,
@@ -484,10 +484,10 @@ const AboutPage = () => {
                       ></path>
                     </motion.svg>
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-3">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3">
                     Innovation First
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text:sm lg:text-lg text-gray-600 dark:text-gray-400">
                     We embrace cutting-edge technologies and creative solutions
                     to stay ahead of the curve.
                   </p>
@@ -500,9 +500,9 @@ const AboutPage = () => {
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className="border-none shadow-none p-6 hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <Card className="border-none shadow-none p-4 sm:p-6 hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
                   <motion.div
-                    className="bg-green-100 dark:bg-green-900/30 w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                    className="bg-green-100 dark:bg-green-900/30 w-12 h-10 sm:h-12 rounded-full flex items-center justify-center mb-4"
                     whileHover={{
                       scale: 1.1,
                       transition: { duration: 0.3 },
@@ -526,8 +526,10 @@ const AboutPage = () => {
                       ></path>
                     </motion.svg>
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-3">Client-Centric</h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3">
+                    Client-Centric
+                  </h3>
+                  <p className="text:sm lg:text-lg text-gray-600 dark:text-gray-400">
                     Your success is our priority. We build lasting partnerships
                     through exceptional service.
                   </p>
@@ -540,9 +542,9 @@ const AboutPage = () => {
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className="border-none shadow-none p-6 hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <Card className="border-none shadow-none p-4 sm:p-6 hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
                   <motion.div
-                    className="bg-yellow-100 dark:bg-yellow-900/30 w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                    className="bg-yellow-100 dark:bg-yellow-900/30 w-12 h-10 sm:h-12 rounded-full flex items-center justify-center mb-4"
                     whileHover={{
                       scale: 1.1,
                       transition: { duration: 0.3 },
@@ -566,8 +568,10 @@ const AboutPage = () => {
                       ></path>
                     </motion.svg>
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-3">Quality Driven</h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3">
+                    Quality Driven
+                  </h3>
+                  <p className="text:sm lg:text-lg text-gray-600 dark:text-gray-400">
                     We maintain the highest standards in every project, ensuring
                     excellence in delivery.
                   </p>
@@ -580,9 +584,9 @@ const AboutPage = () => {
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className="border-none shadow-none p-6 hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <Card className="border-none shadow-none p-4 sm:p-6 hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
                   <motion.div
-                    className="bg-blue-100 dark:bg-primary-color1/30 w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                    className="bg-blue-100 dark:bg-primary-color1/30 w-12 h-10 sm:h-12 rounded-full flex items-center justify-center mb-4"
                     whileHover={{
                       scale: 1.1,
                       transition: { duration: 0.3 },
@@ -606,10 +610,10 @@ const AboutPage = () => {
                       ></path>
                     </motion.svg>
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-3">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3">
                     Results Focused
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text:sm lg:text-lg text-gray-600 dark:text-gray-400">
                     We measure success by the tangible impact we create for your
                     business growth.
                   </p>
@@ -634,7 +638,7 @@ const AboutPage = () => {
               className="grid md:grid-cols-2 "
             >
               <motion.div variants={item} className="space-y-8">
-                <Card className="p-8 border-none shadow-none  transition-all duration-300">
+                <Card className="p-2 py-4 sm:p-8 border-none shadow-none  transition-all duration-300">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="bg-primary-color1/10 w-12 h-12 rounded-full flex items-center justify-center">
                       <svg
@@ -657,7 +661,7 @@ const AboutPage = () => {
                         />
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-bold">Our Vision</h3>
+                    <h3 className="text-2xl font-semibold">Our Vision</h3>
                   </div>
                   <motion.p
                     initial={{ opacity: 0 }}
@@ -672,7 +676,7 @@ const AboutPage = () => {
                 </Card>
               </motion.div>
               <motion.div variants={item} className="space-y-8">
-                <Card className="p-8 border-none shadow-none  transition-all duration-300">
+                <Card className="p-2 py-4 sm:p-8 border-none shadow-none  transition-all duration-300">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="bg-primary-color1/10 w-12 h-12 rounded-full flex items-center justify-center">
                       <svg
@@ -689,7 +693,7 @@ const AboutPage = () => {
                         />
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-bold">Our Mission</h3>
+                    <h3 className="text-2xl font-semibold">Our Mission</h3>
                   </div>
                   <motion.p
                     initial={{ opacity: 0 }}
@@ -705,7 +709,7 @@ const AboutPage = () => {
               </motion.div>
 
               <motion.div variants={item} className="md:col-span-2">
-                <Card className="p-8 border-none shadow-none  transition-all duration-300">
+                <Card className="p-2 py-4 sm:p-8 border-none shadow-none  transition-all duration-300">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="bg-primary-color1/10 w-12 h-12 rounded-full flex items-center justify-center">
                       <svg
@@ -722,7 +726,7 @@ const AboutPage = () => {
                         ></path>
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-bold">Why FutureX?</h3>
+                    <h3 className="text-2xl font-semibold">Why FutureX?</h3>
                   </div>
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -766,7 +770,7 @@ const AboutPage = () => {
               </motion.div>
 
               <motion.div variants={item} className="md:col-span-2">
-                <Card className="p-8 border-none shadow-none transition-all duration-300">
+                <Card className="p-2 py-4 sm:p-8 border-none shadow-none transition-all duration-300">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="bg-primary-color1/10 w-12 h-12 rounded-full flex items-center justify-center">
                       <svg
@@ -783,7 +787,7 @@ const AboutPage = () => {
                         />
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-bold">What We Offer</h3>
+                    <h3 className="text-2xl font-semibold">What We Offer</h3>
                   </div>
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -842,7 +846,7 @@ const AboutPage = () => {
               </motion.div>
 
               <motion.div variants={item} className="md:col-span-2">
-                <Card className="p-8 border-none shadow-none  transition-all duration-300">
+                <Card className="p-2 py-4 sm:p-8 border-none shadow-none  transition-all duration-300">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="bg-primary-color1/10 w-12 h-12 rounded-full flex items-center justify-center">
                       <svg
@@ -859,7 +863,7 @@ const AboutPage = () => {
                         />
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-bold">
+                    <h3 className="text-2xl font-semibold">
                       Social Media Services
                     </h3>
                   </div>
@@ -916,7 +920,7 @@ const AboutPage = () => {
               </motion.div>
 
               <motion.div variants={item} className="md:col-span-2">
-                <Card className="p-8 border-none shadow-none  transition-all duration-300">
+                <Card className="p-2 py-4 sm:p-8 border-none shadow-none  transition-all duration-300">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="bg-primary-color1/10 w-12 h-12 rounded-full flex items-center justify-center">
                       <svg
@@ -933,7 +937,7 @@ const AboutPage = () => {
                         />
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-bold">
+                    <h3 className="text-2xl font-semibold">
                       What FutureX Represents
                     </h3>
                   </div>

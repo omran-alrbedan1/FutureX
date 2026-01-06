@@ -143,8 +143,7 @@ const Header = () => {
       className={`fixed top-0 w-full  z-50 transition-all duration-300 bg-background `}
     >
       <div className="container mx-auto flex justify-between items-center h-14 sm:h-16 lg:h-20 xl:h-24 px-3 sm:px-4 lg:px-6 xl:px-8">
-        {/* Logo Section - Responsive */}
-        <Link
+      <Link
           href="/home"
           className="flex items-center justify-center focus:!border-none border-none shrink-0"
         >
@@ -155,9 +154,11 @@ const Header = () => {
             alt="logo"
 
           />
-        </Link>
 
-        {/* Desktop Navigation */}
+      
+  
+        </Link>
+    
         <div className="hidden lg:flex items-center gap-2 xl:gap-4">
           <nav className="flex items-center">
             <ul className="flex space-x-3 xl:space-x-6">
@@ -332,7 +333,7 @@ const Header = () => {
         <div className="flex lg:hidden items-center gap-2 sm:gap-4">
        
           <button
-            className="text-primary-color1 focus:outline-none p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+            className="text-blue-400 focus:outline-none p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
             onClick={showDrawer}
             aria-label="Open navigation menu"
           >
@@ -357,15 +358,15 @@ const Header = () => {
                 alt="Future X logo"
                 priority
               />
-              <h2 className="text-lg font-bold bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2 bg-clip-text text-transparent">
+              <h2 className="text-lg font-bold bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2 dark:from-blue-400 dark:via-blue-300 dark:to-primary-color2  bg-clip-text text-transparent">
                 Future X
               </h2>
             </Link>
             <button
               onClick={onClose}
-              className="p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              className="p-1 rounded-md  hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
             >
-              <X className="text-primary-color1 w-5 h-5" />
+              <X className="dark:text-blue-400 w-5 h-5" />
             </button>
           </div>
         }

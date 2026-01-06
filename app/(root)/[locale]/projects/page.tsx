@@ -23,9 +23,9 @@ const Page = () => {
   };
 
   return (
-    <div ref={scope} className="overflow-hidden">
+    <div ref={scope} className="overflow-hidden max-sm:-mt-6">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center">
+      <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center">
         <Sliders sliders={sliders} />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/60" />
@@ -36,7 +36,7 @@ const Page = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -76,13 +76,13 @@ const Page = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
-            className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white"
           >
             Selected <span className="text-primary-color1">Works</span> That
             Define <span className="text-primary-color2">Excellence</span>
@@ -164,7 +164,7 @@ const Page = () => {
             height={240}
             width={240}
             alt="work illustration"
-            className="object-contain relative z-10  hover:opacity-100 transition-opacity duration-300"
+            className="max-lg:hidden object-contain relative z-10  hover:opacity-100 transition-opacity duration-300"
           />
         </motion.div>
 

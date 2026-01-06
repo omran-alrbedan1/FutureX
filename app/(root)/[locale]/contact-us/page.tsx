@@ -136,7 +136,7 @@ export default function ContactPage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="contact-item opacity-0 translate-y-5">
+          <div className="contact-item opacity-0 translate-y-5 max-sm:-mt-7">
             <h1 className="text-3xl md:text-4xl font-bold mb-3 text-[#183459] dark:text-white">
               Let's Connect
             </h1>
