@@ -106,12 +106,84 @@ export const staggerContainer = (
   };
 };
 
+
+export const buttonVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+      damping: 12,
+    },
+  },
+  hover: {
+    scale: 1.05,
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 10,
+    },
+  },
+  tap: {
+    scale: 0.95,
+  },
+};
+
+export const gradientTextVariants = {
+  animate: {
+    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+    transition: {
+      duration: 5,
+      repeat: Infinity,
+      ease: "linear",
+    },
+  },
+};
+
+
+
+export const floatingParticleVariants = (delay: number = 0) => ({
+  animate: {
+    y: [0, -20, 0],
+    x: [0, 10, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut",
+      delay,
+    },
+  },
+});
+export const fadeInOpacity = (delay: number, duration: number): Variants => {
+  return {
+    hidden: {
+      opacity: 0,
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        type: "tween",
+        delay: delay,
+        duration: duration,
+        ease: "easeOut",
+      },
+    },
+  };
+};
+
 export const motionAnimations = {
   textVariant,
   fadeIn,
   zoomIn,
   slideIn,
   staggerContainer,
+  buttonVariants,
+  gradientTextVariants,
+  floatingParticleVariants,
+  fadeInOpacity
+
 };
 
 export default motionAnimations;

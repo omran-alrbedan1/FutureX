@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
 import Title from "../parts/Title";
 import { ArrowUpRight, ChevronsRight } from "lucide-react";
 import Image from "next/image";
@@ -20,7 +19,6 @@ const containerVariants = {
 };
 
 export default function Works() {
-  const t = useTranslations("ourWorks");
   const router = useRouter();
 
   const latestProjects = projects.slice(0, 6);
@@ -43,7 +41,7 @@ export default function Works() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-7xl mt-12">
         {latestProjects.map((project, index) => (
           <motion.div
-            key={project.id}
+            key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -67,7 +65,7 @@ export default function Works() {
                     width={600}
                     height={400}
                     alt={project.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-56 object-cover"
                   />
                 </motion.div>
 
@@ -130,12 +128,8 @@ export default function Works() {
             className="
           group inline-flex items-center gap-3 
           font-medium px-6 py-3 rounded-full
-          border border-primary/20 dark:border-primary/30
-          bg-white/90 dark:bg-[#1A1A24]/90
-          text-primary dark:text-primary-foreground
-          hover:bg-white dark:hover:bg-[#232330]
+          border border-primary/20 
           hover:shadow-md hover:border-primary/40
-          backdrop-blur-sm
           transition-all duration-300
         "
           >

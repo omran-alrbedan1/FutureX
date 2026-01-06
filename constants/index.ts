@@ -1,4 +1,13 @@
+import { FaCode } from "react-icons/fa";
 import { icons } from "./icons";
+import {
+  RiCustomerService2Line,
+  RiShieldKeyholeLine,
+  RiTimeLine,
+} from "react-icons/ri";
+import { images } from "./images";
+
+
 
 export const services = [
   {
@@ -65,7 +74,7 @@ export const projects = [
       "Interactive notification system",
       "Full customer support",
     ],
-    image: "/images/hero1.jpg",
+    image: "/images/hero1.png",
     link: "/projects/tigree",
     client: "Various Restaurants",
     year: 2023,
@@ -162,7 +171,7 @@ export const projects = [
     tags: ["CRM", "Business Tools"],
   },
   {
-    id: 6,
+    id: 7,
     title: "FutureX CRM",
     description:
       "Customer relationship management system with task and support ticket features",
@@ -180,7 +189,7 @@ export const projects = [
     tags: ["CRM", "Business Tools"],
   },
   {
-    id: 6,
+    id: 8,
     title: "FutureX CRM",
     description:
       "Customer relationship management system with task and support ticket features",
@@ -198,7 +207,7 @@ export const projects = [
     tags: ["CRM", "Business Tools"],
   },
   {
-    id: 6,
+    id: 9,
     title: "FutureX CRM",
     description:
       "Customer relationship management system with task and support ticket features",
@@ -242,4 +251,104 @@ export const sliders = [
     image: "/images/hero6.jpg",
     url: "/",
   },
+];
+
+export const FAQs = [
+  {
+    value: "technologies",
+    question: "What technologies do you specialize in?",
+    answer:
+      "We specialize in artificial intelligence, machine learning, cloud computing, AR/VR development, and cybersecurity solutions. Our team stays at the forefront of technological advancements to deliver innovative solutions.",
+    icon: FaCode,
+  },
+  {
+    value: "support",
+    question: "Do you offer ongoing support?",
+    answer:
+      "Yes, we provide comprehensive maintenance and support packages including regular updates, monitoring, security patches, and technical support to ensure your solution evolves with your business needs.",
+    icon: RiCustomerService2Line,
+  },
+  {
+    value: "security",
+    question: "How do you ensure data security?",
+    answer:
+      "We implement end-to-end encryption, secure authentication, regular security audits, and comply with international standards like GDPR and ISO 27001 to ensure your data remains protected.",
+    icon: RiShieldKeyholeLine,
+  },
+  {
+    value: "timeline",
+    question: "What's your project timeline?",
+    answer:
+      "Project timelines vary by scope and complexity. Small projects typically take 4-8 weeks, while enterprise solutions may span 3-6 months. We'll provide a detailed timeline during consultation.",
+    icon: RiTimeLine,
+  },
+];
+
+export const testimonials = [
+  {
+    id: 1,
+    quote:
+      "Future X transformed our business with their AI analytics platform. We've seen a 42% increase in operational efficiency and gained valuable insights ",
+    name: "Emily Richardson",
+    title: "CTO, Quantum Innovations",
+    rating: 5,
+  },
+  {
+    id: 2,
+    quote:
+      "The VR training solution developed by Future X has revolutionized how we onboard new employees. Training time has been reduced by 60%",
+    name: "Michael Donovan",
+    title: "Director of Operations",
+    rating: 5,
+  },
+  {
+    id: 3,
+    quote:
+      "Future X's cybersecurity solution has given us peace of mind. Their proactive approach to threat detection has prevented several potential breaches.",
+    name: "Sarah Jennings",
+    title: "CISO, Global Financial Group",
+    rating: 5,
+  },
+  {
+    id: 4,
+    quote:
+      "The cloud migration executed by Future X was flawless. They minimized disruption to our operations and delivered on time and within budget",
+    name: "Robert Chen",
+    title: "IT Director",
+    rating: 5,
+  },
+];
+
+export const clients = [
+  {
+    id: 1,
+    title: "Tigree",
+    image: images.tigree,
+  },
+  {
+    id: 2,
+    title: "Glogo",
+    image: images.glogo,
+  },
+  {
+    id: 3,
+    title: "Litaskunu",
+    image: images.litaskunu,
+  },
+  {
+    id: 4,
+    title: "OptimaPath",
+    image: images.optimal,
+  },
+  {
+    id: 5,
+    title: "Passporty",
+    image: images.passporty,
+  },
+  {
+    id: 6,
+    title: "Perfecto",
+    image: images.perfecto  ,
+  },
+
 ];

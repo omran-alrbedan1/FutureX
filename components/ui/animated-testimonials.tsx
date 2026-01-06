@@ -54,7 +54,7 @@ export const AnimatedProjects = ({
           <AnimatePresence>
             {projects.map((project, index) => (
               <motion.div
-                key={project.image}
+                key={index}
                 initial={{
                   opacity: 0,
                   scale: 0.9,
@@ -95,7 +95,6 @@ export const AnimatedProjects = ({
         </div>
         <div className="flex flex-col justify-between py-4 px-3">
           <motion.div
-            key={active}
             initial={{
               y: 20,
               opacity: 0,
@@ -117,9 +116,9 @@ export const AnimatedProjects = ({
               {projects[active].title}
             </h3>
             <div className="flex flex-wrap gap-2 my-4">
-              {projects[active].tags.map((tag) => (
+              {projects[active].tags.map((tag,index) => (
                 <span
-                  key={tag}
+                  key={index}
                   className="px-3 py-1 text-xs font-medium rounded-full bg-primary-color1/10 text-primary-color1"
                 >
                   {tag}

@@ -67,7 +67,7 @@ export default function LanguageSwitcher() {
         onChange={changeLanguage}
         style={{ width: 140 }}
         optionLabelProp="label"
-        className="language-switcher" // Add a class for custom styling
+        className="language-switcher" 
       >
         {languages.map((lang) => (
           <Select.Option

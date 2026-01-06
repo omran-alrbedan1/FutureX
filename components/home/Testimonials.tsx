@@ -10,60 +10,24 @@ import {
 import { RiStarFill, RiStarHalfFill, RiUser3Fill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import Title from "../parts/Title";
+import { testimonials } from "@/constants";
 const Testimonials = () => {
-  const testimonials = [
-    {
-      id: 1,
-      quote:
-        "Future X transformed our business with their AI analytics platform. We've seen a 42% increase in operational efficiency and gained valuable insights ",
-      name: "Emily Richardson",
-      title: "CTO, Quantum Innovations",
-      rating: 5,
-    },
-    {
-      id: 2,
-      quote:
-        "The VR training solution developed by Future X has revolutionized how we onboard new employees. Training time has been reduced by 60%",
-      name: "Michael Donovan",
-      title: "Director of Operations",
-      rating: 5,
-    },
-    {
-      id: 3,
-      quote:
-        "Future X's cybersecurity solution has given us peace of mind. Their proactive approach to threat detection has prevented several potential breaches.",
-      name: "Sarah Jennings",
-      title: "CISO, Global Financial Group",
-      rating: 4.5,
-    },
-    {
-      id: 4,
-      quote:
-        "The cloud migration executed by Future X was flawless. They minimized disruption to our operations and delivered on time and within budget",
-      name: "Robert Chen",
-      title: "IT Director",
-      rating: 5,
-    },
-  ];
+ 
 
   const renderStars = (rating: number) => {
     const stars = [];
     const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
 
     for (let i = 0; i < fullStars; i++) {
-      stars.push(<RiStarFill key={`full-${i}`} className="text-yellow-400" />);
+      stars.push(<RiStarFill key={`full-${i}`} className="text-primary text-xl mr-1" />);
     }
 
-    if (hasHalfStar) {
-      stars.push(<RiStarHalfFill key="half" className="text-yellow-400" />);
-    }
-
-    return stars;
+  
+    return stars; 
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-white dark:bg-[#0B0B11]">
+    <section id="testimonials" className="py-20">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -142,9 +106,9 @@ const AutoAdvancingTestimonialCarousel = ({
       >
         <div className="relative">
           <CarouselContent className="">
-            {testimonials.map((testimonial) => (
+            {testimonials.map((testimonial,index) => (
               <CarouselItem
-                key={testimonial.id}
+                key={index}
                 className="pl-4 basis-full md:basis-1/2 lg:basis-1/3"
               >
                 <div className="p-1 ">

@@ -17,11 +17,10 @@ const config: Config = {
   			xs: '475px'
   		},
   		colors: {
-  			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			border: 'hsl(var(--border))',
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
+  				DEFAULT: "#1265f9",
   				foreground: 'hsl(var(--primary-foreground))',
   				hover: 'hsl(var(--primary-hover))',
   				active: 'hsl(var(--primary-active))',
@@ -29,6 +28,9 @@ const config: Config = {
   				color2: '#e35b00',
   				color3: 'hsl(var(--primary-color3))'
   			},
+			background:{
+				DEFAULT:"#081029"
+			},
   			darkMod: {
   				'100': '#2a2a2aff',
   				'200': '#1f2020',

@@ -13,7 +13,6 @@ export const InfiniteMovingCards = ({
 }: {
   items: {
     id: number;
-    url: string;
     title: string;
     image: string;
   }[];

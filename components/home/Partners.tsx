@@ -64,7 +64,7 @@ const Partners = async () => {
             <CarouselContent className=" -mr-8 relative ">
               {partners.map((partner, index) => (
                 <CarouselItem
-                  key={partner.id}
+                  key={index}
                   className="px-8 basis-full relative sm:basis-1/2 lg:basis-1/3"
                 >
                   <div className="p-1">

@@ -1,231 +1,243 @@
 "use client";
 import { images } from "@/constants/images";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import React from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { motionAnimations } from "@/utils/motion";
 
 const Hero = () => {
-  const router = useRouter();
-  return (
-    <div className="relative mx-auto flex w-full items-center justify-between -mt-6 overflow-hidden  min-h-screen ">
-      {/* Main Content */}
-      <div className="relative z-10 w-full max-w-7xl px-6 md:px-12 lg:px-16 mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column - Text Content */}
-          <div className="space-y-8 animate-fade-in-up">
-            {/* Main Headline */}
-            <div className="animate-slide-in-left">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
-                Building the
-                <br />
-                <span className="text-primary bg-clip-text ">Future</span>
-                <br />
-                of Technology
-              </h1>
-            </div>
+  const {
+    fadeIn,
+    staggerContainer,
+    fadeInOpacity
+  } = motionAnimations;
 
-            {/* Description Text */}
-            <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg animate-slide-in-left-delay">
+  const containerVariants = staggerContainer(0.2, 0.3);
+
+  const textVariants = fadeIn("left", "spring", 0.1, 0.8);
+  const itemVariants = fadeIn("up", "spring", 0.2, 0.8);
+  const buttonVariants = {
+    hidden: fadeIn("up", "spring", 0, 0.5).hidden,
+    visible: fadeIn("up", "spring", 0.3, 0.5).show,
+    hover: {
+      scale: 1.05,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10,
+      },
+    },
+    tap: {
+      scale: 0.95,
+    },
+  };
+
+  return (
+    <div className="relative mx-auto w-full overflow-hidden min-h-screen ">
+      {/* Main Content */}
+      <div className="relative z-10 w-full px-6 md:px-24 lg:px-28 mx-auto pt-24 md:pt-32">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"  // Changed from "visible" to "show" to match your utility
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+        >
+          {/* Left Column - Text Content */}
+          <div className="space-y-10">
+            {/* Animated Headline */}
+            <motion.div variants={textVariants}>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-white">
+                Building the Future
+                <br />
+                <motion.span
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300"
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  style={{
+                    backgroundSize: "200% 200%",
+                  }}
+                >
+                  of Technology
+                </motion.span>
+              </h1>
+            </motion.div>
+
+            {/* Animated Description */}
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-gray-300 leading-relaxed"
+            >
               At Future X, we transform ideas into reality through cutting-edge
               mobile apps, stunning web development, innovative tech solutions,
               and premium printing services. Your vision, our expertise –
               limitless possibilities.
-            </p>
+            </motion.p>
 
-            {/* Button Group */}
-            <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-left-delay-2">
-              {/* Primary Button */}
-              <button
-                onClick={() => router.push("/consultation")}
-                className="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
-              >
-                Start Your Project
-              </button>
-
-              {/* Secondary Button */}
-              <button
-                onClick={() => router.push("/projects")}
-                className="flex items-center gap-2 text-gray-700 dark:text-gray-400 px-8 py-4 font-semibold hover:text-primary transition-colors duration-300 group border-2 border-gray-200 rounded-lg hover:border-primary"
-              >
-                View Our Projects
-                <span className="transform group-hover:translate-x-1 transition-transform duration-300">
-                  →
-                </span>
-              </button>
-            </div>
+            {/* Animated Divider Line */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "80px" }}
+              transition={{ delay: 1, duration: 1, ease: "easeOut" }}
+              className="h-px bg-gradient-to-r from-blue-500 to-transparent"
+            ></motion.div>
           </div>
 
-          {/* Right Column - Floating Images */}
-          <div className="relative h-[600px] hidden lg:block">
-            {/* Top Right - Gaming/Social Scene (Two people with tablet) */}
-            <div className="absolute top-0 right-0 w-80 h-56 rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:scale-105 hover:rotate-4 transition-all duration-500 animate-float-1">
-              <Image
-                src={images.hero4}
-                alt="Future X - Mobile and Web Development"
-                className="w-full h-full object-cover"
-              />
+          {/* Right Column - 3D Checkmark Logo */}
+          <motion.div
+            initial="hidden"
+            animate="show"
+            whileHover="hover"
+            className="relative h-[500px] lg:h-[600px] -mt-52 flex items-center justify-center lg:justify-end"
+          >
+            <div className="relative w-96 h-96">
+              <div className="relative w-full h-full flex items-center justify-center">
+                <motion.div
+                  variants={fadeInOpacity(0.5, 1)}
+                  initial="hidden"
+                  animate="show"
+                >
+                  <Image
+                    src={images.hero}
+                    height={220}
+                    width={280}
+                    alt="hero"
+                    className="drop-shadow-2xl"
+                  />
+                </motion.div>
+
+                {/* Floating Particles Animation */}
+                <motion.div
+                  className="absolute top-10 left-10 w-4 h-4 bg-blue-400/30 rounded-full"
+                  animate={{
+                    y: [0, -20, 0],
+                    x: [0, 10, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                <motion.div
+                  className="absolute bottom-20 right-10 w-3 h-3 bg-cyan-300/30 rounded-full"
+                  animate={{
+                    y: [0, 15, 0],
+                    x: [0, -15, 0],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5,
+                  }}
+                />
+                <motion.div
+                  className="absolute top-1/3 right-1/4 w-2 h-2 bg-blue-300/20 rounded-full"
+                  animate={{
+                    y: [0, -10, 0],
+                    x: [0, -10, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.3,
+                  }}
+                />
+              </div>
             </div>
-            {/* Left Side - Woman with laptop (Coffee shop scene) */}
-            <div className="absolute top-32 left-0 w-64 h-80 rounded-2xl overflow-hidden shadow-2xl transform -rotate-3 hover:scale-105 hover:-rotate-5 transition-all duration-500 animate-float-2">
-              <Image
-                src={images.hero1}
-                alt="Future X - Mobile and Web Development"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            {/* Bottom Center - Office workspace with team */}
-            <div className="absolute bottom-8 left-20 w-72 h-44 rounded-2xl overflow-hidden shadow-2xl transform rotate-1 hover:scale-105 hover:rotate-3 transition-all duration-500 animate-float-3">
-              <Image
-                src={images.hero2}
-                alt="Future X - Mobile and Web Development"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            {/* Right Middle - Person in green (Portrait style) */}
-            <div
-              className="absolute top-48 right-8 w-48 h-64 rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:scale-105 hover:rotate-5 transition-all duration-500 animate-float-1"
-              style={{ animationDelay: "1s" }}
-            >
-              <Image
-                src={images.hero3}
-                alt="Future X - Mobile and Web Development"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
-      {/* Custom CSS Animations */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
+      {/* Bottom Buttons and Text */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="flex flex-col md:flex-row max-w-7xl mx-auto items-center justify-between -mt-16 gap-8 md:gap-0"
+      >
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          {/* Primary Button with Animation */}
+          <motion.div
+            variants={buttonVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover="hover"
+            whileTap="tap"
+          >
+            <Link
+              href="/consultation"
+              className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/50 text-lg flex items-center gap-2"
+            >
+              Start Your Project
+              <motion.span
+                animate={{ x: [0, 5, 0] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="text-xl"
+              >
+                →
+              </motion.span>
+            </Link>
+          </motion.div>
 
-        @keyframes slideInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
+          {/* Secondary Button with Animation */}
+          <motion.div
+            variants={buttonVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover="hover"
+            whileTap="tap"
+            transition={{ delay: 0.1 }}
+          >
+            <Link
+              href="/projects"
+              className="text-white px-6 py-3 md:px-8 md:py-4 font-semibold hover:text-gray-200 transition-all duration-300 rounded-full bg-gradient-to-r from-gray-800/50 to-gray-900/30 border border-gray-700/50 hover:border-gray-600 text-lg backdrop-blur-sm"
+            >
+              Start Your Demo 1
+            </Link>
+          </motion.div>
+        </div>
 
-        @keyframes float1 {
-          0%,
-          100% {
-            transform: translateY(0px) rotate(3deg);
-          }
-          50% {
-            transform: translateY(-20px) rotate(3deg);
-          }
-        }
-
-        @keyframes float2 {
-          0%,
-          100% {
-            transform: translateY(0px) rotate(-2deg);
-          }
-          50% {
-            transform: translateY(15px) rotate(-2deg);
-          }
-        }
-
-        @keyframes float3 {
-          0%,
-          100% {
-            transform: translateY(0px) rotate(1deg);
-          }
-          50% {
-            transform: translateY(-10px) rotate(1deg);
-          }
-        }
-
-        @keyframes floatDot1 {
-          0%,
-          100% {
-            transform: translateY(0px);
-            opacity: 0.5;
-          }
-          50% {
-            transform: translateY(-20px);
-            opacity: 1;
-          }
-        }
-
-        @keyframes floatDot2 {
-          0%,
-          100% {
-            transform: translateY(0px);
-            opacity: 0.3;
-          }
-          50% {
-            transform: translateY(15px);
-            opacity: 0.8;
-          }
-        }
-
-        @keyframes floatDot3 {
-          0%,
-          100% {
-            transform: translateY(0px) translateX(0px);
-            opacity: 0.4;
-          }
-          50% {
-            transform: translateY(-10px) translateX(5px);
-            opacity: 0.9;
-          }
-        }
-
-        .animate-fade-in-up {
-          animation: fadeInUp 1.2s ease-out 0.3s both;
-        }
-
-        .animate-slide-in-left {
-          animation: slideInLeft 1.2s ease-out 0.3s both;
-        }
-
-        .animate-slide-in-left-delay {
-          animation: slideInLeft 1s ease-out 0.6s both;
-        }
-
-        .animate-slide-in-left-delay-2 {
-          animation: slideInLeft 1s ease-out 0.9s both;
-        }
-
-        .animate-float-1 {
-          animation: float1 4s ease-in-out infinite;
-        }
-
-        .animate-float-2 {
-          animation: float2 3s ease-in-out infinite 1s;
-        }
-
-        .animate-float-3 {
-          animation: float3 5s ease-in-out infinite 2s;
-        }
-
-        .animate-float-dot-1 {
-          animation: floatDot1 4s ease-in-out infinite;
-        }
-
-        .animate-float-dot-2 {
-          animation: floatDot2 3s ease-in-out infinite 1s;
-        }
-
-        .animate-float-dot-3 {
-          animation: floatDot3 5s ease-in-out infinite 2s;
-        }
-      `}</style>
+        {/* Animated Text Section */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          className="max-w-md md:mr-32"
+        >
+          <motion.p
+            animate={{
+              textShadow: [
+                "0 0 5px rgba(59, 130, 246, 0.2), 0 0 10px rgba(59, 130, 246, 0.1)",
+                "0 0 15px #3b82f6, 0 0 30px #3b82f6, 0 0 45px #3b82f6, 0 0 60px #3b82f6, 0 0 75px #3b82f6",
+                "0 0 5px rgba(59, 130, 246, 0.2), 0 0 10px rgba(59, 130, 246, 0.1)",
+              ],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="text-sm font-medium text-blue-400 uppercase tracking-wider mb-2"
+          >
+            "Web Application Development"
+          </motion.p>
+          <p className="text-base text-gray-400">
+            Custom platforms to manage your business
+          </p>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

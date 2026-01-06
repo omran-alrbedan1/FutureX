@@ -37,7 +37,7 @@ export default async function LocaleLayout({
       dir={params.locale === "ar" ? "rtl" : "ltr"}
       suppressHydrationWarning
     >
-      <body className=" dark:bg-[#0B0B11]">
+      <body className="bg-background">
         <Providers>
           <NextIntlClientProvider locale={params.locale} messages={messages}>
             <ThemeProvider>

@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import Title from "../parts/Title";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { services } from "@/constants";
@@ -39,9 +37,26 @@ const iconVariants = {
   },
 };
 
-export default function Services() {
-  const t = useTranslations("ourServices");
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+  hover: {
+    y: -8,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
 
+export default function Services() {
   return (
     <motion.section
       initial="hidden"
@@ -50,63 +65,102 @@ export default function Services() {
       variants={containerVariants}
       className="flex flex-col w-full items-center px-5 sm:px-10 md:px-16 mx-auto mb-16 md:mb-20"
     >
-      <Title
-        title="Our Services"
-        paragraph="Trusted by industry leaders"
-        titleClassName="font-serif"
-        paragraphClassName="text-gray-600"
-      />
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-12">
-        {services.map((service, index) => {
-          return (
-            <Link href={`services/${service.id}`}>
-              <motion.div
-                key={service.id}
-                initial={{ x: "-100px", y: 0, opacity: 0 }}
-                whileInView={{ x: 0, y: 0, opacity: 1 }}
-                transition={{
-                  duration: 0.8,
-                  ease: "easeOut",
-                  delay: index * 0.2,
-                }}
-                className="group"
-              >
-                <div className="relative h-full bg-white rounded-xl overflow-hidden p-6 shadow-sm transition-all duration-300 group-hover:shadow-md dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
-                  <motion.div
-                    variants={iconVariants}
-                    className={`w-14 h-14 rounded-lg ${service.color} bg-opacity-10 flex items-center justify-center mb-6`}
-                  >
-                    <Image
-                      src={service.image}
-                      className="size-32"
-                      height={32}
-                      width={32}
-                      alt={service.title}
-                    />
-                  </motion.div>
-                  <div className="h-12 w-1 bg-primary-color2 absolute top-8 -left-0.5 rounded-full group-hover:animate-bounce" />
-
-                  <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {service.description}
-                  </p>
-                  <motion.a
-                    href={service.link}
-                    className="inline-flex items-center text-primary-color1 font-medium hover:text-primary-color2 transition-colors"
-                    whileHover={{ x: 5 }}
-                  >
-                    Learn more
-                    <ChevronRight className="w-4 h-4 ml-1" />
-                  </motion.a>
-                </div>
-              </motion.div>
-            </Link>
-          );
-        })}
+{/* Title Section */}
+      <div className="flex flex-col md:flex-row  items-start md:items-center gap-8 md:gap-12 w-full mb-12 md:mb-16 px-16">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-sm font-semibold text-gray-500 dark:text-gray-400 whitespace-nowrap"
+        >
+          | Our Services |
+        </motion.div>
+        
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-2xl md:text-3xl  font-bold text-gray-900 dark:text-white"
+        >
+          Trusted by <span className="text-blue-500">industry </span><br/>leaders
+        </motion.h2>
+        
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-base md:text-lg text-gray-600 dark:text-gray-300 flex-1 max-w-lg mx-auto"
+        >
+          We provide cutting-edge technology solutions designed to help businesses grow, scale, and innovate in a digital-first world.
+        </motion.p>
       </div>
+      {/* Services Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full">
+        {services.map((service, index) => (
+          <Link
+            key={service.id}
+            href={`services/${service.id}`}
+            className="block h-full"
+          >
+            <motion.div
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              whileHover="hover"
+              viewport={{ once: true }}
+              className="group h-full"
+            >
+              {/* Updated Card Design */}
+              <div className="relative h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl overflow-hidden p-7 md:p-8 shadow-lg transition-all duration-300 group-hover:shadow-2xl border border-gray-200 dark:border-gray-700 group-hover:border-blue-300 dark:group-hover:border-blue-500">
+                
+                
+                {/* Icon Container */}
+                <motion.div
+                  variants={iconVariants}
+                  className={`relative w-16 h-16 rounded-2xl ${service.color} bg-opacity-15 flex items-center justify-center mb-6 overflow-hidden group-hover:bg-opacity-25 transition-all duration-300`}
+                >
+                  {/* Icon Background Glow */}
+                  <div className={`absolute inset-0 ${service.color} bg-opacity-5 blur-xl`} />
+                  
+                  <Image
+                    src={service.image}
+                    className="size-12 relative z-10"
+                    height={52}
+                    width={52}
+                    alt={service.title}
+                  />
+                </motion.div>
+
+                {/* Service Title */}
+                <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {service.title}
+                </h3>
+                
+                {/* Service Description */}
+                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+
+                {/* Learn More Link */}
+                <motion.div
+                  className="inline-flex items-center text-blue-600 dark:text-blue-400 font-semibold group/link"
+                  whileHover={{ x: 5 }}
+                >
+                  <span className="mr-2">Learn More</span>
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                </motion.div>
+
+                {/* Hover Effect Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+
+                {/* Decorative Corner */}
+                <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-gray-300 dark:border-gray-600 rounded-bl-xl opacity-50 group-hover:opacity-100 group-hover:border-blue-400 transition-all duration-300" />
+              </div>
+            </motion.div>
+          </Link>
+        ))}
+      </div>
+
     </motion.section>
   );
 }

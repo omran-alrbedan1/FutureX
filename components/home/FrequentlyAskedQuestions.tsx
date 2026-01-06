@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import {
   Accordion,
   AccordionContent,
@@ -7,58 +6,19 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  RiCustomerService2Line,
-  RiShieldKeyholeLine,
-  RiTimeLine,
+  RiCustomerService2Line
 } from "react-icons/ri";
-import { FaCode } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Title from "../parts/Title";
 import { useRouter } from "next/navigation";
+import { ChevronRight } from "lucide-react";
+import { FAQs } from "@/constants";
 
 const FrequentlyAskedQuestions = () => {
   const router = useRouter();
-  const faqs = [
-    {
-      value: "technologies",
-      question: "What technologies do you specialize in?",
-      answer:
-        "We specialize in artificial intelligence, machine learning, cloud computing, AR/VR development, and cybersecurity solutions. Our team stays at the forefront of technological advancements to deliver innovative solutions.",
-      icon: <FaCode className="w-5 h-5" />,
-      iconBg: "bg-blue-100 dark:bg-blue-900/30",
-      iconColor: "text-blue-600 dark:text-blue-400",
-    },
-    {
-      value: "support",
-      question: "Do you offer ongoing support?",
-      answer:
-        "Yes, we provide comprehensive maintenance and support packages including regular updates, monitoring, security patches, and technical support to ensure your solution evolves with your business needs.",
-      icon: <RiCustomerService2Line className="w-5 h-5" />,
-      iconBg: "bg-purple-100 dark:bg-purple-900/30",
-      iconColor: "text-purple-600 dark:text-purple-400",
-    },
-    {
-      value: "security",
-      question: "How do you ensure data security?",
-      answer:
-        "We implement end-to-end encryption, secure authentication, regular security audits, and comply with international standards like GDPR and ISO 27001 to ensure your data remains protected.",
-      icon: <RiShieldKeyholeLine className="w-5 h-5" />,
-      iconBg: "bg-orange-100 dark:bg-orange-900/30",
-      iconColor: "text-orange-600 dark:text-orange-400",
-    },
-    {
-      value: "timeline",
-      question: "What's your project timeline?",
-      answer:
-        "Project timelines vary by scope and complexity. Small projects typically take 4-8 weeks, while enterprise solutions may span 3-6 months. We'll provide a detailed timeline during consultation.",
-      icon: <RiTimeLine className="w-5 h-5" />,
-      iconBg: "bg-green-100 dark:bg-green-900/30",
-      iconColor: "text-green-600 dark:text-green-400",
-    },
-  ];
 
   return (
-    <div className="bg-white dark:bg-[#0B0B11]">
+    <div className="">
       <section id="faq" className="pb-10 relative overflow-hidden">
         <div className="container mx-auto px-6 relative">
           <motion.div
@@ -82,37 +42,45 @@ const FrequentlyAskedQuestions = () => {
             <Accordion
               type="single"
               collapsible
-              className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4"
+              className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
             >
-              {faqs.map((faq) => (
-                <AccordionItem
-                  key={faq.value}
-                  value={faq.value}
-                  className=" overflow-hidden border-none bg-zinc-50 dark:bg-gray-900 !rounded-lg hover:border-primary/50 transition-colors data-[state=open]:border-primary/50"
-                >
-                  <AccordionTrigger className="p-6 hover:no-underline text-left">
-                    <div className="flex items-center gap-4 w-full">
-                      <div
-                        className={`${faq.iconBg} ${faq.iconColor} w-10 h-10 rounded-lg flex items-center justify-center shrink-0`}
-                      >
-                        {faq.icon}
+              {FAQs.map((faq, index) => {
+                const Icon = faq.icon;
+                return (
+                  <AccordionItem
+                    key={index}
+                    value={faq.value}
+                    className="overflow-hidden bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 data-[state=open]:border-blue-300 dark:data-[state=open]:border-blue-500 group transition-all duration-300 hover:shadow-xl"
+                  >
+
+                    <AccordionTrigger className="p-6 md:p-8 hover:no-underline text-left group-hover:bg-gradient-to-br from-blue-50/20 to-cyan-50/20 dark:from-blue-900/10 dark:to-cyan-900/10 transition-colors">
+                      <div className="flex items-center gap-4 w-full">
+                        <div
+                          className={`text-white bg-primary w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110`}
+                        >
+                            <Icon className="text-xl"/>
+                        </div>
+                        <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white flex-1 text-left group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          {faq.question}
+                        </h3>
                       </div>
-                      <h3 className="text-lg font-semibold text-foreground flex-1 text-left">
-                        {faq.question}
-                      </h3>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-6 pb-6 pt-2">
-                    <div className="pl-14">
-                      <p className="text-muted-foreground leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
+                    </AccordionTrigger>
+
+                    <AccordionContent className="p-6 md:p-8 pt-0">
+                      <div className="pl-16">
+                        <div className="h-px w-20 bg-gradient-to-r from-blue-500 to-transparent mb-4" />
+                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                )
+              })}
             </Accordion>
           </motion.div>
+
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -144,6 +112,7 @@ const FrequentlyAskedQuestions = () => {
               </a>
             </div>
           </motion.div>
+
         </div>
       </section>
     </div>

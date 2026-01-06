@@ -329,9 +329,9 @@ const ConsultationForm = () => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent className="bg-white border-gray-200 shadow-lg dark:bg-slate-800 dark:border-zinc-700">
-                      {serviceTypes.map((service) => (
+                      {serviceTypes.map((service,index) => (
                         <SelectItem
-                          key={service.value}
+                          key={index}
                           value={service.value}
                           className="hover:bg-gray-100 dark:hover:bg-zinc-700 focus:bg-gray-100 dark:focus:bg-zinc-700"
                         >
@@ -436,9 +436,9 @@ const ConsultationForm = () => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent className="bg-white border-gray-200 shadow-lg dark:bg-slate-800 dark:border-zinc-700">
-                      {availableTimes.map((time) => (
+                      {availableTimes.map((time,index) => (
                         <SelectItem
-                          key={time}
+                          key={index}
                           value={time}
                           className="hover:bg-gray-100 dark:hover:bg-zinc-700 focus:bg-gray-100 dark:focus:bg-zinc-700"
                         >

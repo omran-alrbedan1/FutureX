@@ -129,10 +129,10 @@ const Header = () => {
 
   if (!isClient) {
     return (
-      <header className="fixed top-0 w-full h-16 bg-white dark:bg-darkMod-200 z-50 shadow-md">
+      <header className="fixed top-0 w-full h-16 bg-background z-50 shadow-md">
         <div className="flex justify-between items-center h-full px-4 sm:px-6">
-          <div className="w-24 sm:w-32 h-8 sm:h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
-          <div className="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded"></div>
+          <div className="w-24 sm:w-32 h-8 sm:h-10  rounded"></div>
+          <div className="w-8 h-8 rounded"></div>
         </div>
       </header>
     );
@@ -140,11 +140,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 w-full dark:bg-[#0B192C] bg-white z-50 transition-all duration-300 ${
-        isScrolled
-          ? "shadow-lg backdrop-blur-md bg-white/95 dark:bg-[#0B192C]/95"
-          : "shadow-md"
-      }`}
+      className={`fixed top-0 w-full  z-50 transition-all duration-300 bg-background `}
     >
       <div className="container mx-auto flex justify-between items-center h-14 sm:h-16 lg:h-20 xl:h-24 px-3 sm:px-4 lg:px-6 xl:px-8">
         {/* Logo Section - Responsive */}
@@ -153,42 +149,12 @@ const Header = () => {
           className="flex items-center justify-center focus:!border-none border-none shrink-0"
         >
           <Image
-            src={images.logo2}
-            width={
-              windowWidth >= 1280
-                ? 80
-                : windowWidth >= 1024
-                ? 65
-                : windowWidth >= 768
-                ? 45
-                : 35
-            }
-            height={
-              windowWidth >= 1280
-                ? 80
-                : windowWidth >= 1024
-                ? 65
-                : windowWidth >= 768
-                ? 45
-                : 35
-            }
-            alt="Future X logo"
-            priority
-            className="transition-all duration-300"
+            src={images.logo}
+            width={132}
+            height={132}
+            alt="logo"
+
           />
-          <h2
-            className={`ml-1 sm:ml-2 font-semibold bg-gradient-to-r from-primary-color1 via-primary-color1 to-primary-color2 bg-clip-text text-transparent transition-all duration-300 ${
-              windowWidth >= 1280
-                ? "text-2xl xl:text-3xl"
-                : windowWidth >= 1024
-                ? "text-xl lg:text-2xl"
-                : windowWidth >= 768
-                ? "text-lg"
-                : "text-base"
-            }`}
-          >
-            Future X
-          </h2>
         </Link>
 
         {/* Desktop Navigation */}
@@ -254,7 +220,7 @@ const Header = () => {
                       >
                         {services.map((service, index) => (
                           <motion.li
-                            key={service.id}
+                            key={index}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{
@@ -359,16 +325,12 @@ const Header = () => {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2 xl:gap-4 ml-2 xl:ml-4">
-            <ThemeToggler />
-          </div>
+       
         </div>
 
         {/* Mobile/Tablet Navigation Button */}
         <div className="flex lg:hidden items-center gap-2 sm:gap-4">
-          <div className="hidden md:block">
-            <ThemeToggler />
-          </div>
+       
           <button
             className="text-primary-color1 focus:outline-none p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
             onClick={showDrawer}
@@ -490,9 +452,9 @@ const Header = () => {
                       transition={{ duration: 0.3 }}
                       className="ml-6 space-y-1"
                     >
-                      {services.map((service) => (
+                      {services.map((service,index) => (
                         <Link
-                          key={service.id}
+                          key={index}
                           href={service.link}
                           onClick={onClose}
                           className={`flex items-center gap-3  py-2 rounded-lg transition-all duration-300 text-sm ${
