@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Title from "../parts/Title";
-import { ArrowUpRight, ChevronsRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { projects } from "@/constants";
 import { Button } from "../ui/moving-border";
@@ -18,7 +18,7 @@ const containerVariants = {
   },
 };
 
-export default function Works() {
+export default function   Works() {
   const router = useRouter();
 
   const latestProjects = projects.slice(0, 6);
@@ -51,7 +51,7 @@ export default function Works() {
               borderRadius="1rem"
               duration={5000 + Math.random() * 2000}
               onClick={() => router.push(`/projects/${project.id}`)}
-              className="  text-black border border-gray-200 dark:border-none p-0 overflow-hidden"
+              className="  p-0 overflow-hidden"
             >
               <div className="relative h-full bg-gradient-to-br  from-gray-900 to-gray-800 rounded-xl overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-xl  border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
                 {/* Image with shine effect */}
@@ -79,7 +79,7 @@ export default function Works() {
                     {project.category}
                   </motion.span>
 
-                  <h3 className="text-xl font-bold mb-2  dark:text-white group-hover:text-primary-color1 transition-colors">
+                  <h3 className="text-xl font-bold mb-2  text-white group-hover:text-primary-color1 transition-colors">
                     {project.title}
                   </h3>
 

@@ -124,7 +124,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="flex w-[90%] items-center justify-center absolute bottom-[8px] md:bottom-[12px] left-1/2 -translate-x-1/2">
+      <div className="flex pb-3 w-[90%] items-center justify-center absolute bottom-[10px] md:bottom-[12px] left-1/2 -translate-x-1/2">
         <div className="text-gray-600 dark:text-gray-300 mx-3 text-sm text-center md:text-left">
           &copy; {new Date().getFullYear()}{" "}
           <span className="text-primary-color1 inline-block font-semibold">

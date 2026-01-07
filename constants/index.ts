@@ -9,57 +9,57 @@ import { images } from "./images";
 
 
 
-export const services = [
-  {
-    id: 1,
-    title: "Mobile App Development",
-    description:
-      "We specialize in Flutter to develop commercial, reliable, and efficient mobile applications for iOS and Android.",
-    image: icons.mobile_application,
-  },
-  {
-    id: 2,
-    title: "Web Application Development",
-    description:
-      "Custom platforms to manage your business from anywhere using Laravel, Node.js, React, and ASP.NET.",
-    image: icons.web_application,
-    link: "/services/web-app",
-  },
-  {
-    id: 3,
-    title: "Printing Services",
-    description:
-      "High-quality printing services including business cards, brochures, banners, and promotional materials.",
-    image: icons.printer,
-    link: "/services/printing",
-    color: "from-purple-500 to-purple-600",
-  },
-  {
-    id: 4,
-    title: "UI/UX Design",
-    description:
-      "Creating designs that make users comfortable and confident in your product.",
-    image: icons.figma,
-    link: "/services/ui-ux",
-    color: "from-pink-500 to-pink-600",
-  },
-  {
-    id: 5,
-    title: "Custom Software Systems",
-    description:
-      "ERP, CRM, hospital/clinic systems, school systems, and POS solutions.",
-    image: icons.system,
-    link: "/services/software",
-  },
-  {
-    id: 6,
-    title: "Digital Marketing",
-    description:
-      "Social media management, targeted ads, and professional marketing campaigns.",
-    image: icons.digital,
-    link: "/services/marketing",
-  },
-];
+// export const services = [
+//   {
+//     id: 1,
+//     title: "Mobile App Development",
+//     description:
+//       "We specialize in Flutter to develop commercial, reliable, and efficient mobile applications for iOS and Android.",
+//     image: icons.mobile_application,
+//   },
+//   {
+//     id: 2,
+//     title: "Web Application Development",
+//     description:
+//       "Custom platforms to manage your business from anywhere using Laravel, Node.js, React, and ASP.NET.",
+//     image: icons.web_application,
+//     link: "/services/web-app",
+//   },
+//   {
+//     id: 3,
+//     title: "Printing Services",
+//     description:
+//       "High-quality printing services including business cards, brochures, banners, and promotional materials.",
+//     image: icons.printer,
+//     link: "/services/printing",
+//     color: "from-purple-500 to-purple-600",
+//   },
+//   {
+//     id: 4,
+//     title: "UI/UX Design",
+//     description:
+//       "Creating designs that make users comfortable and confident in your product.",
+//     image: icons.figma,
+//     link: "/services/ui-ux",
+//     color: "from-pink-500 to-pink-600",
+//   },
+//   {
+//     id: 5,
+//     title: "Custom Software Systems",
+//     description:
+//       "ERP, CRM, hospital/clinic systems, school systems, and POS solutions.",
+//     image: icons.system,
+//     link: "/services/software",
+//   },
+//   {
+//     id: 6,
+//     title: "Digital Marketing",
+//     description:
+//       "Social media management, targeted ads, and professional marketing campaigns.",
+//     image: icons.digital,
+//     link: "/services/marketing",
+//   },
+// ];
 
 export const projects = [
   {
@@ -352,3 +352,55 @@ export const clients = [
   },
 
 ];
+
+
+ export  const services = [
+    {
+      id: 1,
+      title: "Mobile App Development",
+      description:
+        "We specialize in Flutter to develop commercial, reliable, and efficient mobile applications for iOS and Android.",
+      image: icons.mobile_application,
+      link: "/services/1",
+    },
+    {
+      id: 2,
+      title: "Web Application Development",
+      description:
+        "Custom platforms to manage your business from anywhere using Laravel, Node.js, React, and ASP.NET.",
+      image: icons.web_application,
+      link: "/services/2",
+    },
+    {
+      id: 3,
+      title: "Printing Services",
+      description:
+        "High-quality printing services including business cards, brochures, banners, and promotional materials.",
+      image: icons.printer,
+      link: "/services/3",
+    },
+    {
+      id: 4,
+      title: "UI/UX Design",
+      description:
+        "Creating designs that make users comfortable and confident in your product.",
+      image: icons.figma,
+      link: "/services/4",
+    },
+    {
+      id: 5,
+      title: "Custom Software Systems",
+      description:
+        "ERP, CRM, hospital/clinic systems, school systems, and POS solutions.",
+      image: icons.system,
+      link: "/services/5",
+    },
+    {
+      id: 6,
+      title: "Digital Marketing",
+      description:
+        "Social media management, targeted ads, and professional marketing campaigns.",
+      image: icons.digital,
+      link: "/services/6",
+    },
+  ];

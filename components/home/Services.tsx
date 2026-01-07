@@ -5,160 +5,131 @@ import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { services } from "@/constants";
 import Link from "next/link";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const iconVariants = {
-  hidden: { scale: 0.8, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      delay: 0.3,
-      duration: 0.5,
-      ease: [0.34, 1.56, 0.64, 1],
-    },
-  },
-  hover: {
-    scale: 1.15,
-    rotate: 8,
-    transition: {
-      duration: 0.3,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-  hover: {
-    y: -8,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
-    },
-  },
-};
+import { fadeIn, staggerContainer, textVariant } from "@/utils/motion";
 
 export default function Services() {
   return (
     <motion.section
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={containerVariants}
-      className="flex flex-col w-full items-center px-5 sm:px-10 md:px-16 mx-auto mb-16 md:mb-20"
+      whileInView="show"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={staggerContainer(0.2, 0.1)}
+      className="w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 mx-auto py-12 sm:py-16 md:py-20"
     >
-{/* Title Section */}
-      <div className="flex flex-col md:flex-row  items-start md:items-center gap-8 md:gap-12 w-full mb-12 md:mb-16 px-16">
+      {/* Title Section */}
+      <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-8 xl:gap-12 w-full mb-10 sm:mb-12 md:mb-16">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-sm font-semibold text-white whitespace-nowrap"
+          variants={textVariant(0.1)}
+          className="text-sm sm:text-base font-semibold text-white whitespace-nowrap"
         >
           | Our Services |
         </motion.div>
         
         <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-2xl md:text-3xl  font-bold text-white"
+          variants={textVariant(0.2)}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight"
         >
-          Trusted by <span className="text-blue-500">industry </span><br/>leaders
+          Trusted by <span className="text-blue-500">industry </span>
+          <br className="hidden sm:block" />
+          leaders
         </motion.h2>
         
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-base md:text-lg dark:text-gray-300 flex-1 max-w-lg mx-auto"
+          variants={textVariant(0.3)}
+          className="text-sm sm:text-base md:text-lg text-gray-300 flex-1 max-w-xl lg:max-w-2xl mx-auto lg:mx-0"
         >
           We provide cutting-edge technology solutions designed to help businesses grow, scale, and innovate in a digital-first world.
         </motion.p>
       </div>
+      
       {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full">
+      <motion.div
+        variants={staggerContainer(0.1, 0.2)}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 w-full"
+      >
         {services.map((service, index) => (
-          <Link
+          <motion.div
             key={service.id}
-            href={`services/${service.id}`}
-            className="block h-full"
+            variants={fadeIn("up", "spring", index * 0.1, 0.8)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-30px" }}
+            whileHover={{ y: -8 }}
+            transition={{
+              duration: 0.3,
+              ease: "easeOut"
+            }}
+            className="group h-full"
           >
-            <motion.div
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              whileHover="hover"
-              viewport={{ once: true }}
-              className="group h-full"
+            <Link
+              href={`services/${service.id}`}
+              className="block h-full"
             >
               {/* Updated Card Design */}
-              <div className="relative h-full bg-gradient-to-br  from-gray-900 to-gray-800 rounded-2xl overflow-hidden p-7 md:p-8 shadow-lg transition-all duration-300 group-hover:shadow-2xl border border-gray-700  group-hover:border-blue-500">
+              <div className="relative h-full bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl sm:rounded-2xl overflow-hidden p-5 sm:p-6 md:p-7 lg:p-8 shadow-lg transition-all duration-300 group-hover:shadow-2xl border border-gray-700 group-hover:border-blue-500">
                 {/* Icon Container */}
                 <motion.div
-                  variants={iconVariants}
-                  className={`relative w-16 h-16 rounded-2xl ${service.color} bg-opacity-15 flex items-center justify-center mb-6 overflow-hidden group-hover:bg-opacity-25 transition-all duration-300`}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{
+                    delay: index * 0.1 + 0.3,
+                    duration: 0.5,
+                    ease: [0.34, 1.56, 0.64, 1],
+                  }}
+                  whileHover={{
+                    scale: 1.15,
+                    rotate: 8,
+                    transition: { duration: 0.3 }
+                  }}
+                  className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-opacity-15 flex items-center justify-center mb-5 sm:mb-6 overflow-hidden group-hover:bg-opacity-25 transition-all duration-300"
                 >
                   {/* Icon Background Glow */}
-                  <div className={`absolute inset-0 ${service.color} bg-opacity-5 blur-xl`} />
+                  <div className="absolute inset-0 bg-opacity-5 blur-xl" />
                   
                   <Image
                     src={service.image}
-                    className="size-12 relative z-10"
-                    height={52}
-                    width={52}
+                    className="size-10 sm:size-12 relative z-10"
+                    height={40}
+                    width={40}
                     alt={service.title}
                   />
                 </motion.div>
 
                 {/* Service Title */}
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-white group-hover:text-blue-400 transition-colors line-clamp-2">
                   {service.title}
                 </h3>
                 
                 {/* Service Description */}
-                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed line-clamp-3 sm:line-clamp-4">
                   {service.description}
                 </p>
 
                 {/* Learn More Link */}
                 <motion.div
-                  className="inline-flex items-center text-blue-600 dark:text-blue-400 font-semibold group/link"
+                  initial={{ x: -10, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: index * 0.1 + 0.4,
+                    duration: 0.5
+                  }}
                   whileHover={{ x: 5 }}
+                  className="inline-flex items-center text-blue-400 font-medium sm:font-semibold group/link text-sm sm:text-base"
                 >
                   <span className="mr-2">Learn More</span>
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                  <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover/link:translate-x-1" />
                 </motion.div>
 
                 {/* Hover Effect Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
 
                 {/* Decorative Corner */}
-                <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-gray-300 dark:border-gray-600 rounded-bl-xl opacity-50 group-hover:opacity-100 group-hover:border-blue-400 transition-all duration-300" />
+                <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-6 h-6 sm:w-8 sm:h-8 border-b-2 border-r-2 border-gray-600 rounded-bl-lg sm:rounded-bl-xl opacity-50 group-hover:opacity-100 group-hover:border-blue-400 transition-all duration-300" />
               </div>
-            </motion.div>
-          </Link>
+            </Link>
+          </motion.div>
         ))}
-      </div>
-
+      </motion.div>
     </motion.section>
   );
 }

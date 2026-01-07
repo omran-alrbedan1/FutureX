@@ -49,17 +49,17 @@ const FrequentlyAskedQuestions = () => {
                   <AccordionItem
                     key={index}
                     value={faq.value}
-                    className="overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-lg border  dark:border-gray-700 data-[state=open]:border-blue-300 dark:data-[state=open]:border-blue-500 group transition-all duration-300 hover:shadow-xl"
+                    className="overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-lg border border-gray-700  data-[state=open]:border-blue-500 group transition-all duration-300 hover:shadow-xl"
                   >
 
-                    <AccordionTrigger className="p-6 md:p-8 hover:no-underline text-left group-hover:bg-gradient-to-br from-blue-50/20 to-cyan-50/20 dark:from-blue-900/10 dark:to-cyan-900/10 transition-colors">
+                    <AccordionTrigger className="p-6 md:p-8 hover:no-underline text-left group-hover:bg-gradient-to-br from-blue-900/10 to-cyan-900/10 transition-colors">
                       <div className="flex items-center gap-4 w-full">
                         <div
                           className={`text-white bg-primary w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110`}
                         >
                             <Icon className="text-xl"/>
                         </div>
-                        <h3 className="text-lg md:text-xl font-bold   text-white flex-1 text-left group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        <h3 className="text-lg md:text-xl font-bold   text-white flex-1 text-left  group-hover:text-blue-400 transition-colors">
                           {faq.question}
                         </h3>
                       </div>

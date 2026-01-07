@@ -13,9 +13,9 @@ const Hero = () => {
   } = motionAnimations;
 
   const containerVariants = staggerContainer(0.2, 0.3);
-
   const textVariants = fadeIn("left", "spring", 0.1, 0.8);
   const itemVariants = fadeIn("up", "spring", 0.2, 0.8);
+  
   const buttonVariants = {
     hidden: fadeIn("up", "spring", 0, 0.5).hidden,
     visible: fadeIn("up", "spring", 0.3, 0.5).show,
@@ -33,20 +33,20 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative mx-auto w-full overflow-hidden min-h-screen ">
+    <div className="relative mx-auto w-full overflow-hidden mb-32">
       {/* Main Content */}
-      <div className="relative z-10 w-full px-6 md:px-24 lg:px-28 mx-auto pt-24 md:pt-32">
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-12 lg:px-24 mx-auto md:pt-20 pt-12 ">
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="show"  // Changed from "visible" to "show" to match your utility
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+          animate="show"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center"
         >
           {/* Left Column - Text Content */}
-          <div className="space-y-10">
+          <div className="space-y-6 md:space-y-8 lg:space-y-10 order-2 lg:order-1">
             {/* Animated Headline */}
             <motion.div variants={textVariants}>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-white">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight sm:leading-[1.1] text-white">
                 Building the Future
                 <br />
                 <motion.span
@@ -71,7 +71,7 @@ const Hero = () => {
             {/* Animated Description */}
             <motion.p
               variants={itemVariants}
-              className="text-lg md:text-xl text-gray-300 leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed"
             >
               At Future X, we transform ideas into reality through cutting-edge
               mobile apps, stunning web development, innovative tech solutions,
@@ -86,37 +86,82 @@ const Hero = () => {
               transition={{ delay: 1, duration: 1, ease: "easeOut" }}
               className="h-px bg-gradient-to-r from-blue-500 to-transparent"
             ></motion.div>
+
+            {/* Mobile-Only Buttons (shown below text on small screens) */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 lg:hidden">
+              <motion.div
+                variants={buttonVariants}
+                initial="hidden"
+                animate="visible"
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <Link
+                  href="/consultation"
+                  className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-5 py-3 sm:px-6 sm:py-3.5 rounded-full font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/50 text-base sm:text-lg flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  Start Your Project
+                  <motion.span
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="text-lg sm:text-xl"
+                  >
+                    →
+                  </motion.span>
+                </Link>
+              </motion.div>
+
+              <motion.div
+                variants={buttonVariants}
+                initial="hidden"
+                animate="visible"
+                whileHover="hover"
+                whileTap="tap"
+                transition={{ delay: 0.1 }}
+              >
+                <Link
+                  href="/projects"
+                  className="text-white px-5 py-3 sm:px-6 sm:py-3.5 font-semibold hover:text-gray-200 transition-all duration-300 rounded-full bg-gradient-to-r from-gray-800/50 to-gray-900/30 border border-gray-700/50 hover:border-gray-600 text-base sm:text-lg backdrop-blur-sm flex items-center justify-center w-full sm:w-auto"
+                >
+                  View Our Projects
+                </Link>
+              </motion.div>
+            </div>
           </div>
 
-          {/* Right Column - 3D Checkmark Logo */}
+          {/* Right Column - Image with responsive adjustments */}
           <motion.div
             initial="hidden"
             animate="show"
             whileHover="hover"
-            className="relative h-[500px] lg:h-[600px] -mt-52 flex items-center justify-center lg:justify-end"
+            className="relative h-[200px] xs:h-[220px] sm:h-[180px] md:h-[250px] lg:h-[300px] xl:h-[400px] flex items-center justify-center lg:justify-end order-1 lg:order-2 -mt-8 sm:-mt-12 md:-mt-16 lg:-mt-0"
           >
-            <div className="relative w-96 h-96">
               <div className="relative w-full h-full flex items-center justify-center">
                 <motion.div
                   variants={fadeInOpacity(0.5, 1)}
                   initial="hidden"
                   animate="show"
+                  className="w-full h-full flex items-center justify-center"
                 >
                   <Image
                     src={images.hero}
-                    height={220}
-                    width={280}
+                    fill
                     alt="hero"
-                    className="drop-shadow-2xl"
+                    className="object-contain drop-shadow-2xl"
+                    priority
                   />
                 </motion.div>
 
-                {/* Floating Particles Animation */}
+                {/* Floating Particles - Responsive positioning */}
                 <motion.div
-                  className="absolute top-10 left-10 w-4 h-4 bg-blue-400/30 rounded-full"
+                  className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 w-3 h-3 sm:w-4 sm:h-4 bg-blue-400/30 rounded-full"
                   animate={{
-                    y: [0, -20, 0],
-                    x: [0, 10, 0],
+                    y: [0, -15, 0],
+                    x: [0, 8, 0],
                   }}
                   transition={{
                     duration: 3,
@@ -125,10 +170,10 @@ const Hero = () => {
                   }}
                 />
                 <motion.div
-                  className="absolute bottom-20 right-10 w-3 h-3 bg-cyan-300/30 rounded-full"
+                  className="absolute bottom-12 right-4 sm:bottom-16 sm:right-6 md:bottom-20 md:right-10 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-cyan-300/30 rounded-full"
                   animate={{
-                    y: [0, 15, 0],
-                    x: [0, -15, 0],
+                    y: [0, 12, 0],
+                    x: [0, -12, 0],
                   }}
                   transition={{
                     duration: 2.5,
@@ -138,10 +183,10 @@ const Hero = () => {
                   }}
                 />
                 <motion.div
-                  className="absolute top-1/3 right-1/4 w-2 h-2 bg-blue-300/20 rounded-full"
+                  className="absolute top-1/4 right-1/4 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-blue-300/20 rounded-full"
                   animate={{
-                    y: [0, -10, 0],
-                    x: [0, -10, 0],
+                    y: [0, -8, 0],
+                    x: [0, -8, 0],
                   }}
                   transition={{
                     duration: 2,
@@ -150,21 +195,20 @@ const Hero = () => {
                     delay: 0.3,
                   }}
                 />
-              </div>
             </div>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Bottom Buttons and Text */}
+      {/* Bottom Section - Hidden on mobile, shown on larger screens */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.8 }}
-        className="flex flex-col md:flex-row max-w-7xl mx-auto items-center justify-between -mt-16 gap-8 md:gap-0"
+        className="hidden lg:flex max-w-7xl mx-auto items-center justify-between px-6 md:px-12 lg:px-24 mt-8 md:mt-12 lg:mt-4 xl:mt-8 gap-8"
       >
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          {/* Primary Button with Animation */}
+          {/* Primary Button */}
           <motion.div
             variants={buttonVariants}
             initial="hidden"
@@ -191,7 +235,7 @@ const Hero = () => {
             </Link>
           </motion.div>
 
-          {/* Secondary Button with Animation */}
+          {/* Secondary Button */}
           <motion.div
             variants={buttonVariants}
             initial="hidden"
@@ -204,7 +248,7 @@ const Hero = () => {
               href="/projects"
               className="text-white px-6 py-3 md:px-8 md:py-4 font-semibold hover:text-gray-200 transition-all duration-300 rounded-full bg-gradient-to-r from-gray-800/50 to-gray-900/30 border border-gray-700/50 hover:border-gray-600 text-lg backdrop-blur-sm"
             >
-              Start Your Demo 1
+              View Our Projects
             </Link>
           </motion.div>
         </div>
@@ -214,7 +258,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="max-w-md md:mr-32"
+          className="max-w-md"
         >
           <motion.p
             animate={{

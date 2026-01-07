@@ -86,7 +86,7 @@ const WhatsAppFloatingButton = () => {
         initial="hidden"
         animate={controls}
         variants={pulseVariants}
-        className="absolute inset-0 rounded-full bg-primary-color1/30"
+        className="absolute inset-0 rounded-full"
       />
 
       {/* Main button with multiple animations */}
@@ -94,7 +94,7 @@ const WhatsAppFloatingButton = () => {
         href="https://wa.me/962780185759"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center w-16 h-16 rounded-full bg-primary-color1 shadow-xl hover:shadow-2xl"
+        className="flex items-center justify-center w-16 h-16 rounded-full bg-primary shadow-xl hover:shadow-2xl"
         aria-label="Chat on WhatsApp"
         variants={variants}
         initial="hidden"
