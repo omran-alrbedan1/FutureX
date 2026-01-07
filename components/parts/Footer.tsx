@@ -39,7 +39,7 @@ const Footer = () => {
                 />
            
               </Link>
-              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              <p className="text-gray-300 text-sm leading-relaxed">
                 Your trusted partner for innovative solutions and exceptional
                 services that drive business growth.
               </p>
@@ -52,7 +52,7 @@ const Footer = () => {
                   key={index}
                   href={item.href}
                   target="_blank"
-                  className="p-2.5 rounded-full border border-gray-600 dark:border-gray-500 text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:border-blue-500 hover:text-white transition-all duration-300"
+                  className="p-2.5 rounded-full border border-gray-500  text-gray-200 hover:bg-blue-500 hover:border-blue-500 hover:text-white transition-all duration-300"
                 >
                   {item.icon}
                 </Link>
@@ -63,7 +63,7 @@ const Footer = () => {
           {/* Contact Us Section */}
           <div className="lg:col-span-2">
             <div className="flex flex-col gap-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white relative pb-2 inline-block">
+              <h3 className="text-lg font-semibold text-white relative pb-2 inline-block">
                 Contact Us
                 <span className="absolute bottom-0 left-0 w-16 h-0.5 bg-blue-500"></span>
               </h3>
@@ -72,11 +72,11 @@ const Footer = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Location */}
                 <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
-                    <FaLocationDot className="text-lg text-gray-700 dark:text-gray-300" />
+                  <div className="p-2 rounded-lg bg-gray-800">
+                    <FaLocationDot className="text-lg text-gray-300" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">
+                    <span className="text-sm font-medium text-white">
                       Jordan - Amman
                     </span>
                   </div>
@@ -84,11 +84,11 @@ const Footer = () => {
 
                 {/* Email 1 */}
                 <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
-                    <MdOutlineMail className="text-lg text-gray-700 dark:text-gray-300" />
+                  <div className="p-2 rounded-lg bg-gray-800">
+                    <MdOutlineMail className="text-lg text-gray-300" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-sm text-gray-600 dark:text-gray-300">
+                    <span className="text-sm text-gray-300">
                       Waleedalbarghouthi2@gmail.com
                     </span>
                   </div>
@@ -96,11 +96,11 @@ const Footer = () => {
 
                 {/* Email 2 */}
                 <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
-                    <MdOutlineMail className="text-lg text-gray-700 dark:text-gray-300" />
+                  <div className="p-2 rounded-lg bg-gray-800">
+                    <MdOutlineMail className="text-lg text-gray-300" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-sm text-gray-600 dark:text-gray-300">
+                    <span className="text-sm text-gray-300">
                       futxtech@gmail.com
                     </span>
                   </div>
@@ -108,11 +108,11 @@ const Footer = () => {
 
                 {/* Phone */}
                 <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
-                    <MdOutlinePhoneIphone className="text-lg text-gray-700 dark:text-gray-300" />
+                  <div className="p-2 rounded-lg bg-gray-800">
+                    <MdOutlinePhoneIphone className="text-lg text-gray-300" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-sm text-gray-600 dark:text-gray-300">
+                    <span className="text-sm text-gray-300">
                       +962 780 185 759
                     </span>
                   </div>
@@ -125,7 +125,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="flex pb-3 w-[90%] items-center justify-center absolute bottom-[10px] md:bottom-[12px] left-1/2 -translate-x-1/2">
-        <div className="text-gray-600 dark:text-gray-300 mx-3 text-sm text-center md:text-left">
+        <div className="text-gray-300 mx-3 text-sm text-center md:text-left">
           &copy; {new Date().getFullYear()}{" "}
           <span className="text-primary-color1 inline-block font-semibold">
             FUTURE <span className="text-blue-500">X</span>
