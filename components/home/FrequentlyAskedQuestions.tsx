@@ -11,7 +11,6 @@ import {
 import { motion } from "framer-motion";
 import Title from "../parts/Title";
 import { useRouter } from "next/navigation";
-import { ChevronRight } from "lucide-react";
 import { FAQs } from "@/constants";
 
 const FrequentlyAskedQuestions = () => {
@@ -50,7 +49,7 @@ const FrequentlyAskedQuestions = () => {
                   <AccordionItem
                     key={index}
                     value={faq.value}
-                    className="overflow-hidden bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 data-[state=open]:border-blue-300 dark:data-[state=open]:border-blue-500 group transition-all duration-300 hover:shadow-xl"
+                    className="overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-lg border  dark:border-gray-700 data-[state=open]:border-blue-300 dark:data-[state=open]:border-blue-500 group transition-all duration-300 hover:shadow-xl"
                   >
 
                     <AccordionTrigger className="p-6 md:p-8 hover:no-underline text-left group-hover:bg-gradient-to-br from-blue-50/20 to-cyan-50/20 dark:from-blue-900/10 dark:to-cyan-900/10 transition-colors">
@@ -60,7 +59,7 @@ const FrequentlyAskedQuestions = () => {
                         >
                             <Icon className="text-xl"/>
                         </div>
-                        <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white flex-1 text-left group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        <h3 className="text-lg md:text-xl font-bold   text-white flex-1 text-left group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                           {faq.question}
                         </h3>
                       </div>
@@ -69,7 +68,7 @@ const FrequentlyAskedQuestions = () => {
                     <AccordionContent className="p-6 md:p-8 pt-0">
                       <div className="pl-16">
                         <div className="h-px w-20 bg-gradient-to-r from-blue-500 to-transparent mb-4" />
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        <p className="text-gray-300 leading-relaxed">
                           {faq.answer}
                         </p>
                       </div>
@@ -95,10 +94,10 @@ const FrequentlyAskedQuestions = () => {
                 className="
       group inline-flex items-center gap-3 
       font-medium px-6 py-3 rounded-full
-      border border-primary/20 dark:border-primary/30
-      bg-white/90 dark:bg-[#1A1A24]/90
-      text-primary dark:text-primary-foreground
-      hover:bg-white dark:hover:bg-[#232330]
+      border border-primary/30
+    bg-[#1A1A24]/90
+      text-primary-foreground
+      hover:bg-[#232330]
       hover:shadow-md hover:border-primary/40
       backdrop-blur-sm
       transition-all duration-300

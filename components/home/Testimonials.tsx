@@ -114,10 +114,10 @@ const AutoAdvancingTestimonialCarousel = ({
                 <div className="p-1 ">
                   <div
                     className="
-                    bg-white dark:bg-gray-900
+                 bg-gray-900
                     p-8 rounded-lg h-full
                     shadow-md dark:shadow-none
-                    border border-gray-100 dark:border-gray-800
+                    border border-gray-800
                   "
                   >
                     <div className="flex items-center mb-6">
@@ -127,7 +127,7 @@ const AutoAdvancingTestimonialCarousel = ({
                     </div>
                     <p
                       className="
-                      text-gray-600 dark:text-gray-300 
+                      text-gray-300 
                       mb-6 text-lg leading-relaxed
                     "
                     >
@@ -137,22 +137,22 @@ const AutoAdvancingTestimonialCarousel = ({
                       <div
                         className="
                         w-12 h-12 
-                        bg-gray-100 dark:bg-gray-800 
+                        bg-gray-800 
                         rounded-full flex items-center justify-center mr-4
                       "
                       >
-                        <RiUser3Fill className="text-gray-500 dark:text-gray-400" />
+                        <RiUser3Fill className="text-gray-400" />
                       </div>
                       <div>
                         <h4
                           className="
                           text-lg font-semibold 
-                          text-gray-900 dark:text-white
+                        text-white
                         "
                         >
                           {testimonial.name}
                         </h4>
-                        <p className="text-gray-500 dark:text-gray-400">
+                        <p className="text-gray-400">
                           {testimonial.title}
                         </p>
                       </div>

@@ -71,7 +71,7 @@ export default function Services() {
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-sm font-semibold text-gray-500 dark:text-gray-400 whitespace-nowrap"
+          className="text-sm font-semibold text-white whitespace-nowrap"
         >
           | Our Services |
         </motion.div>
@@ -80,7 +80,7 @@ export default function Services() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-2xl md:text-3xl  font-bold text-gray-900 dark:text-white"
+          className="text-2xl md:text-3xl  font-bold text-white"
         >
           Trusted by <span className="text-blue-500">industry </span><br/>leaders
         </motion.h2>
@@ -89,7 +89,7 @@ export default function Services() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-base md:text-lg text-gray-600 dark:text-gray-300 flex-1 max-w-lg mx-auto"
+          className="text-base md:text-lg dark:text-gray-300 flex-1 max-w-lg mx-auto"
         >
           We provide cutting-edge technology solutions designed to help businesses grow, scale, and innovate in a digital-first world.
         </motion.p>
@@ -111,9 +111,7 @@ export default function Services() {
               className="group h-full"
             >
               {/* Updated Card Design */}
-              <div className="relative h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl overflow-hidden p-7 md:p-8 shadow-lg transition-all duration-300 group-hover:shadow-2xl border border-gray-200 dark:border-gray-700 group-hover:border-blue-300 dark:group-hover:border-blue-500">
-                
-                
+              <div className="relative h-full bg-gradient-to-br  from-gray-900 to-gray-800 rounded-2xl overflow-hidden p-7 md:p-8 shadow-lg transition-all duration-300 group-hover:shadow-2xl border border-gray-700  group-hover:border-blue-500">
                 {/* Icon Container */}
                 <motion.div
                   variants={iconVariants}

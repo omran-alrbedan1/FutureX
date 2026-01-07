@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "FUTURE X",
   description: "Software Company",
   icons: {
-    icon: "/images/logo.png",
+    icon: "/images/hero.png",
   },
 };
 

@@ -10,7 +10,6 @@ import {
   Menu as MenuIcon,
   PhoneIcon,
   X,
-  User,
   ChevronDown,
 } from "lucide-react";
 import { SlInfo } from "react-icons/sl";

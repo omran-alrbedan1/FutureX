@@ -51,9 +51,9 @@ export default function Works() {
               borderRadius="1rem"
               duration={5000 + Math.random() * 2000}
               onClick={() => router.push(`/projects/${project.id}`)}
-              className="dark:bg-gray-900  text-black border border-gray-200 dark:border-none p-0 overflow-hidden"
+              className="  text-black border border-gray-200 dark:border-none p-0 overflow-hidden"
             >
-              <div className="relative h-full bg-white rounded-xl overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-xl dark:bg-gray-900 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
+              <div className="relative h-full bg-gradient-to-br  from-gray-900 to-gray-800 rounded-xl overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-xl  border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
                 {/* Image with shine effect */}
                 <motion.div
                   className="relative overflow-hidden"
@@ -73,17 +73,17 @@ export default function Works() {
                 <div className="p-6 relative z-10">
                   {/* Category badge with animation */}
                   <motion.span
-                    className="inline-block px-3 py-1 text-xs font-semibold rounded-full mb-3 bg-primary-color1/10 text-primary-color1"
+                    className="inline-block px-3 py-1 text-xs font-semibold rounded-full mb-3 bg-primary-color1/10 text-primary"
                     whileHover={{ scale: 1.05 }}
                   >
                     {project.category}
                   </motion.span>
 
-                  <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white group-hover:text-primary-color1 transition-colors">
+                  <h3 className="text-xl font-bold mb-2  dark:text-white group-hover:text-primary-color1 transition-colors">
                     {project.title}
                   </h3>
 
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
+                  <p className="text-gray-300 mb-4 line-clamp-2">
                     {project.description}
                   </p>
 
@@ -95,7 +95,7 @@ export default function Works() {
                   >
                     <a
                       href={"/"}
-                      className="inline-flex items-center font-medium text-primary-color1 hover:text-primary-color2 transition-colors"
+                      className="inline-flex items-center font-medium text-primary  transition-colors"
                     >
                       View Project
                       <motion.span
