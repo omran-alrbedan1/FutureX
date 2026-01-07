@@ -154,15 +154,12 @@ const Header = () => {
             alt="logo"
 
           />
-
-      
-  
         </Link>
     
         <div className="hidden lg:flex items-center gap-2 xl:gap-4">
           <nav className="flex items-center">
             <ul className="flex space-x-3 xl:space-x-6">
-              {/* Home */}
+              {/* Homee */}
               <li>
                 <Link
                   href="/home"
